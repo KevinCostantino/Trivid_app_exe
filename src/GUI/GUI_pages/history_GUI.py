@@ -21,10 +21,22 @@ class HistoryPanel(QWidget):
         self.header_bar = self.create_header_bar()
         panel_layout.addWidget(self.header_bar)
         
-        # Conteúdo do histórico (inicializar como oculto)
+        # Alturas aumentadas para ocupar mais da tela e mostrar mais itens
+        self.card_height = 80      
+        self.spacing = 8           
+        self.margins = 15 * 2
+        self.collapsed_lines = 8   # Aumentado de 6 para 8 linhas (mais itens visíveis)
+        self.expanded_lines = 15   # Aumentado de 12 para 15 linhas (ainda mais itens)
+
+        collapsed_height = (self.card_height * self.collapsed_lines) + (self.spacing * (self.collapsed_lines - 1)) + self.margins
+        expanded_height = (self.card_height * self.expanded_lines) + (self.spacing * (self.expanded_lines - 1)) + self.margins
+
+        self.collapsed_height = collapsed_height
+        self.expanded_height = expanded_height
+
         self.history_content = self.create_history_content()
-        self.history_content.setFixedHeight(500)
-        self.history_content.hide()  # Começa oculto
+        self.history_content.setMaximumHeight(self.collapsed_height+self.collapsed_height)
+        self.history_content.hide()
         
         panel_layout.addWidget(self.history_content)
     
@@ -171,7 +183,6 @@ class HistoryPanel(QWidget):
     def create_file_card(self, file_data):
         """Cria um card individual para cada arquivo"""
         card = QWidget()
-        card.setFixedHeight(70)  # Altura ajustada
         card.setStyleSheet(HistoryStyleSheet.file_card_style())
         
         layout = QHBoxLayout(card)
@@ -259,5 +270,6 @@ class HistoryPanel(QWidget):
         else:
             self.history_content.show()
             up_icon = QIcon("images/icons/down_icon.png")
-
             self.toggle_btn.setIcon(up_icon)
+            # Ao expandir, aumenta a altura
+            self.history_content.setMaximumHeight(self.expanded_height)

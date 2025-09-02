@@ -61,6 +61,7 @@ class HistoryStyleSheet:
                 background-color: {HistoryStyleSheet.WHITE_COLOR};  /* Fundo branco */
                 border-bottom-left-radius: 10px;   /* Borda arredondada inferior esquerda */
                 border-bottom-right-radius: 10px;  /* Borda arredondada inferior direita */
+                height: 160px;
             }}
         """
     
@@ -88,13 +89,13 @@ class HistoryStyleSheet:
         """Cards dos arquivos - fundo branco, bordas e hover"""
         return f"""
             QWidget {{
-                background-color: {HistoryStyleSheet.WHITE_COLOR};  /* Fundo branco */
-                border-radius: 10px;      /* Bordas arredondadas */
-                border: 1px solid {HistoryStyleSheet.CARD_BORDER};  /* Borda cinza clara */
-                height: 100px;            /* Altura fixa (ERRO: deveria ser height minúsculo) */
+                background-color: {HistoryStyleSheet.WHITE_COLOR};
+                border-radius: 8px;
+                border: 1px solid {HistoryStyleSheet.CARD_BORDER};
+                height: 80px;            /* Altura reduzida de 150 para 80 */
             }}
             QWidget:hover {{
-                background-color: {HistoryStyleSheet.CARD_HOVER};  /* Cor quando passa o mouse */
+                background-color: {HistoryStyleSheet.CARD_HOVER};
             }}
         """
 
