@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import VideoDownloader from './VideoDownloader'
 import styles from './styles/HomeTab.module.css'
+import VideoDownloader from './VideoDownloader' // Verificar se está correto
 
 export default function HomeTab() {
   const [message, setMessage] = useState<string | null>(null)
@@ -11,69 +11,62 @@ export default function HomeTab() {
     try {
       const text = await navigator.clipboard.readText()
       if (!text) {
-        setMessage('Nenhum link encontrado na área de transferência.')
+        setMessage('Nenhum texto encontrado na área de transferência')
         return
       }
       setMessage(`Link detectado: ${text}`)
-      // Aqui você pode chamar uma função para detectar a plataforma
     } catch {
-      setMessage('Não foi possível acessar a área de transferência.')
+      setMessage('Erro ao acessar área de transferência')
     }
   }
 
   return (
     <div className={styles.container}>
-      {/* Seção Principal - Paste Here */}
+      {/* Seção Cole URL */}
       <div className={styles.pasteSection}>
         <div className={styles.pasteContent}>
-          <h2 className={styles.pasteTitle}>
-            Click and paste the link here
-          </h2>
-          
-          <button
-            onClick={handlePaste}
-            className={styles.pasteButton}
-          >
-            <svg className={styles.pasteIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-            </svg>
-            Paste Here
+          <h2 className={styles.pasteTitle}>Cole sua URL aqui</h2>
+          <button onClick={handlePaste} className={styles.pasteButton}>
+            <span className={styles.pasteIcon}>📋</span>
+            Colar da Área de Transferência
           </button>
-          
           {message && (
             <div className={styles.messageBox}>
-              <p className={styles.messageText}>{message}</p>
+              <span className={styles.messageText}>{message}</span>
             </div>
           )}
         </div>
       </div>
 
-      {/* Seção de Download */}
+      {/* Video Downloader */}
       <VideoDownloader />
       
-      {/* Seção de Recursos */}
+      {/* Features Section */}
       <div className={styles.featuresSection}>
-        <h2 className={styles.featuresTitle}>
-          Recursos Disponíveis
-        </h2>
-        
+        <h2 className={styles.featuresTitle}>Plataformas Suportadas</h2>
         <div className={styles.featuresGrid}>
           <div className={`${styles.featureCard} ${styles.youtubeCard}`}>
-            <div className={styles.featureIcon}>🎥</div>
+            <div className={styles.featureIcon}>📺</div>
             <h3 className={styles.featureTitle}>YouTube</h3>
-            <p className={styles.featureDescription}>Downloads até 4K</p>
+            <p className={styles.featureDescription}>
+              Baixe vídeos e áudios em alta qualidade
+            </p>
           </div>
           
           <div className={`${styles.featureCard} ${styles.twitchCard}`}>
             <div className={styles.featureIcon}>🎮</div>
             <h3 className={styles.featureTitle}>Twitch</h3>
-            <p className={styles.featureDescription}>VODs e streams</p>
+            <p className={styles.featureDescription}>
+              Downloads de streams e clipes
+            </p>
           </div>
           
           <div className={`${styles.featureCard} ${styles.spotifyCard}`}>
             <div className={styles.featureIcon}>🎵</div>
             <h3 className={styles.featureTitle}>Spotify</h3>
-            <p className={styles.featureDescription}>Áudio de alta qualidade</p>
+            <p className={styles.featureDescription}>
+              Extraia áudios de playlists
+            </p>
           </div>
         </div>
       </div>

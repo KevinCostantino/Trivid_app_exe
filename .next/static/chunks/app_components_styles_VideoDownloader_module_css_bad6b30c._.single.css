@@ -1,0 +1,238 @@
+/* [project]/app/components/styles/VideoDownloader.module.css [app-client] (css) */
+.VideoDownloader-module__ENrLMa__container {
+  background-color: var(--white-color);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all .3s ease-in-out;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -2px rgba(0, 0, 0, .1);
+}
+
+.VideoDownloader-module__ENrLMa__container:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .1);
+}
+
+@apply text-xl font-semibold mb-6;
+
+.VideoDownloader-module__ENrLMa__title {
+  color: var(--dark-text);
+}
+
+@apply space-y-4;
+
+.VideoDownloader-module__ENrLMa__inputSection {
+  margin-bottom: 2rem;
+}
+
+@apply flex gap-3;
+
+.VideoDownloader-module__ENrLMa__inputGroup {
+  flex-direction: column;
+  gap: 1rem;
+  display: flex;
+}
+
+@media (min-width: 640px) {
+  .VideoDownloader-module__ENrLMa__inputGroup {
+    flex-direction: row;
+  }
+}
+
+@apply flex-1 px-4 py-3 border rounded-lg transition-colors;
+
+.VideoDownloader-module__ENrLMa__urlInput {
+  border: 2px solid var(--border-color);
+  background-color: var(--white-color);
+  color: var(--dark-text);
+  border-radius: .75rem;
+  outline: none;
+  flex: 1;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  transition: all .3s;
+}
+
+.VideoDownloader-module__ENrLMa__urlInput:focus {
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, .1);
+}
+
+.VideoDownloader-module__ENrLMa__urlInput::placeholder {
+  color: var(--text-color);
+}
+
+@apply px-6 py-3 text-white font-medium rounded-lg transition-colors;
+
+.VideoDownloader-module__ENrLMa__analyzeButton {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+  border-radius: .75rem;
+  justify-content: center;
+  align-items: center;
+  gap: .75rem;
+  min-width: 160px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all .3s cubic-bezier(.4, 0, .2, 1);
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton:before {
+  content: "";
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+  opacity: 0;
+  transition: opacity .3s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton:hover:before {
+  opacity: 1;
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 128, 128, .3);
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton:active {
+  transform: translateY(0);
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton:disabled {
+  background: var(--text-color);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton:disabled:before {
+  display: none;
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton span {
+  z-index: 1;
+  position: relative;
+}
+
+@apply w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin;
+
+.VideoDownloader-module__ENrLMa__loadingSpinner {
+  z-index: 1;
+  border: 2px solid rgba(255, 255, 255, .3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  animation: 1s linear infinite VideoDownloader-module__ENrLMa__spin;
+  position: relative;
+}
+
+@keyframes VideoDownloader-module__ENrLMa__spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@apply space-y-4 p-4 border rounded-lg;
+
+.VideoDownloader-module__ENrLMa__videoInfo {
+  background: linear-gradient(135deg, var(--background-color), rgba(0, 128, 128, .05));
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  animation: .5s ease-out VideoDownloader-module__ENrLMa__fadeInUp;
+}
+
+@apply font-semibold;
+
+.VideoDownloader-module__ENrLMa__videoTitle {
+  color: var(--dark-text);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+@apply flex gap-4 text-sm;
+
+.VideoDownloader-module__ENrLMa__videoMeta {
+  color: var(--text-color);
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: .875rem;
+  display: flex;
+}
+
+.VideoDownloader-module__ENrLMa__videoMeta span {
+  background: rgba(0, 128, 128, .1);
+  border: 1px solid rgba(0, 128, 128, .2);
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  font-weight: 500;
+}
+
+@apply w-full max-w-xs rounded-lg shadow-sm;
+
+.VideoDownloader-module__ENrLMa__thumbnail {
+  border-radius: .75rem;
+  width: 100%;
+  max-width: 20rem;
+  height: auto;
+  transition: transform .3s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1);
+}
+
+.VideoDownloader-module__ENrLMa__thumbnail:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 640px) {
+  .VideoDownloader-module__ENrLMa__container {
+    padding: 1.5rem;
+  }
+
+  .VideoDownloader-module__ENrLMa__urlInput {
+    padding: .875rem 1rem;
+    font-size: .875rem;
+  }
+
+  .VideoDownloader-module__ENrLMa__analyzeButton {
+    min-width: 140px;
+    padding: .875rem 1.5rem;
+    font-size: .875rem;
+  }
+
+  .VideoDownloader-module__ENrLMa__videoInfo {
+    padding: 1.5rem;
+  }
+}
+
+.VideoDownloader-module__ENrLMa__dark .VideoDownloader-module__ENrLMa__container {
+  background-color: var(--white-color);
+  border-color: var(--border-color);
+}
+
+.VideoDownloader-module__ENrLMa__dark .VideoDownloader-module__ENrLMa__urlInput {
+  background-color: var(--white-color);
+  border-color: var(--border-color);
+  color: var(--dark-text);
+}
+
+.VideoDownloader-module__ENrLMa__dark .VideoDownloader-module__ENrLMa__videoInfo {
+  background: linear-gradient(135deg, var(--background-color), rgba(0, 128, 128, .1));
+}
+
+/*# sourceMappingURL=app_components_styles_VideoDownloader_module_css_bad6b30c._.single.css.map*/

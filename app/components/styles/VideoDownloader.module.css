@@ -1,7 +1,15 @@
 .container {
-  @apply rounded-lg shadow-sm border p-6;
   background-color: var(--white-color);
-  border-color: var(--border-color);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: 1px solid var(--border-color);
+  padding: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.container:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border-color: var(--primary-color);
 }
 
 .title {
@@ -11,124 +19,206 @@
 
 .inputSection {
   @apply space-y-4;
+  margin-bottom: 2rem;
 }
 
 .inputGroup {
   @apply flex gap-3;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .inputGroup {
+    flex-direction: row;
+  }
 }
 
 .urlInput {
   @apply flex-1 px-4 py-3 border rounded-lg transition-colors;
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: 0.75rem;
   background-color: var(--white-color);
-  border-color: var(--border-color);
   color: var(--dark-text);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
 }
 
 .urlInput:focus {
-  outline: none;
-  border-color: var(--focus-color);
-  box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.1);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+  transform: translateY(-1px);
+}
+
+.urlInput::placeholder {
+  color: var(--text-color);
 }
 
 .analyzeButton {
   @apply px-6 py-3 text-white font-medium rounded-lg transition-colors;
-  background-color: var(--primary-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  min-width: 160px;
+  position: relative;
+  overflow: hidden;
+}
+
+.analyzeButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.analyzeButton:hover::before {
+  opacity: 1;
 }
 
 .analyzeButton:hover {
-  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 128, 128, 0.3);
+}
+
+.analyzeButton:active {
+  transform: translateY(0);
 }
 
 .analyzeButton:disabled {
-  background-color: var(--text-color);
+  background: var(--text-color);
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.analyzeButton:disabled::before {
+  display: none;
+}
+
+.analyzeButton span {
+  position: relative;
+  z-index: 1;
 }
 
 .loadingSpinner {
   @apply w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: relative;
+  z-index: 1;
 }
 
-.errorMessage {
-  @apply p-3 border rounded-lg;
-  background-color: #fee2e2;
-  border-color: #fca5a5;
-  color: #dc2626;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .videoInfo {
   @apply space-y-4 p-4 border rounded-lg;
-  background-color: var(--background-color);
-  border-color: var(--border-color);
+  background: linear-gradient(135deg, var(--background-color), rgba(0, 128, 128, 0.05));
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  animation: fadeInUp 0.5s ease-out;
 }
 
 .videoTitle {
   @apply font-semibold;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--dark-text);
+  margin-bottom: 1rem;
+  line-height: 1.4;
 }
 
 .videoMeta {
   @apply flex gap-4 text-sm;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
   color: var(--text-color);
+}
+
+.videoMeta span {
+  background: rgba(0, 128, 128, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 128, 128, 0.2);
+  font-weight: 500;
 }
 
 .thumbnail {
   @apply w-full max-w-xs rounded-lg shadow-sm;
+  width: 100%;
+  max-width: 20rem;
+  height: auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  transition: transform 0.3s ease;
 }
 
-.formatSection {
-  @apply space-y-3;
+.thumbnail:hover {
+  transform: scale(1.02);
 }
 
-.formatLabel {
-  @apply block font-medium;
-  color: var(--dark-text);
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 640px) {
+  .container {
+    padding: 1.5rem;
+  }
+  
+  .urlInput {
+    padding: 0.875rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .analyzeButton {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+    min-width: 140px;
+  }
+  
+  .videoInfo {
+    padding: 1.5rem;
+  }
 }
 
-.formatSelect {
-  @apply w-full px-3 py-2 border rounded-lg;
+/* === DARK MODE === */
+.dark .container {
+  background-color: var(--white-color);
+  border-color: var(--border-color);
+}
+
+.dark .urlInput {
   background-color: var(--white-color);
   border-color: var(--border-color);
   color: var(--dark-text);
 }
 
-.formatSelect:focus {
-  outline: none;
-  border-color: var(--focus-color);
-}
-
-.downloadActions {
-  @apply flex gap-3 pt-4;
-}
-
-.downloadButton {
-  @apply px-6 py-3 text-white font-medium rounded-lg transition-colors;
-  background-color: var(--secondary-color);
-}
-
-.downloadButton:hover {
-  background-color: var(--primary-hover);
-}
-
-.downloadButton:disabled {
-  background-color: var(--text-color);
-  cursor: not-allowed;
-}
-
-.progressSection {
-  @apply space-y-2;
-}
-
-.progressBar {
-  @apply w-full h-2 rounded-full overflow-hidden;
-  background-color: var(--background-color);
-}
-
-.progressFill {
-  @apply h-full transition-all duration-300;
-  background-color: var(--primary-color);
-}
-
-.progressText {
-  @apply text-sm;
-  color: var(--text-color);
+.dark .videoInfo {
+  background: linear-gradient(135deg, var(--background-color), rgba(0, 128, 128, 0.1));
 }

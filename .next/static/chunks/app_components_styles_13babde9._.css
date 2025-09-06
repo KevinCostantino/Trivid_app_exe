@@ -1,0 +1,1006 @@
+/* [project]/app/components/styles/TitleBar.module.css [app-client] (css) */
+.TitleBar-module__zm9PcG__titleBar {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background-color: var(--primary-hover);
+  border-bottom: 2px solid var(--secondary-color);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  -webkit-app-region: drag;
+  justify-content: space-between;
+  align-items: center;
+  height: 8rem;
+  padding: 0 2rem;
+  display: flex;
+}
+
+.TitleBar-module__zm9PcG__dark .TitleBar-module__zm9PcG__titleBar {
+  background-color: var(--primary-color);
+  border-bottom-color: var(--secondary-color);
+}
+
+.TitleBar-module__zm9PcG__titleBarContent {
+  align-items: center;
+  gap: 2rem;
+  display: flex;
+}
+
+.TitleBar-module__zm9PcG__logo {
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 10.5rem;
+  height: 10.5rem;
+  display: flex;
+}
+
+.TitleBar-module__zm9PcG__logoImage {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.TitleBar-module__zm9PcG__logoText {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3rem;
+}
+
+.TitleBar-module__zm9PcG__titleText {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.TitleBar-module__zm9PcG__subtitleText {
+  color: rgba(255, 255, 255, .9);
+  margin-left: 1rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.TitleBar-module__zm9PcG__controls {
+  -webkit-app-region: no-drag;
+  gap: .5rem;
+  display: flex;
+}
+
+.TitleBar-module__zm9PcG__controlButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: .75rem;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  transition: background-color .15s ease-in-out;
+  display: flex;
+}
+
+.TitleBar-module__zm9PcG__controlButton:hover {
+  background-color: rgba(255, 255, 255, .2);
+}
+
+.TitleBar-module__zm9PcG__closeButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: .75rem;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  transition: background-color .15s ease-in-out;
+  display: flex;
+}
+
+.TitleBar-module__zm9PcG__closeButton:hover {
+  background-color: #ef4444;
+}
+
+.TitleBar-module__zm9PcG__minimizeIcon {
+  background-color: #fff;
+  width: 1.5rem;
+  height: .25rem;
+}
+
+.TitleBar-module__zm9PcG__controlButton:hover .TitleBar-module__zm9PcG__minimizeIcon {
+  background-color: #fff;
+}
+
+.TitleBar-module__zm9PcG__maximizeIcon {
+  border: 2px solid #fff;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.TitleBar-module__zm9PcG__controlButton:hover .TitleBar-module__zm9PcG__maximizeIcon {
+  border-color: #fff;
+}
+
+.TitleBar-module__zm9PcG__closeIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+}
+
+.TitleBar-module__zm9PcG__closeIconLine {
+  background-color: #fff;
+  width: 1.5rem;
+  height: .25rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.TitleBar-module__zm9PcG__closeIconLine1 {
+  transform: rotate(45deg)translateY(.5rem);
+}
+
+.TitleBar-module__zm9PcG__closeIconLine2 {
+  transform: rotate(-45deg)translateY(.5rem);
+}
+
+.TitleBar-module__zm9PcG__closeButton:hover .TitleBar-module__zm9PcG__closeIconLine {
+  background-color: #fff;
+}
+
+/* [project]/app/components/styles/Tabs.module.css [app-client] (css) */
+.Tabs-module__zQxafG__container {
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  border-radius: .5rem;
+  gap: .25rem;
+  padding: .25rem;
+  display: flex;
+}
+
+.Tabs-module__zQxafG__tab {
+  cursor: pointer;
+  border: none;
+  border-radius: .375rem;
+  flex: 1;
+  padding: .75rem 1.5rem;
+  font-weight: 500;
+  transition: all .2s ease-in-out;
+}
+
+.Tabs-module__zQxafG__tabInactive {
+  color: var(--text-color);
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.Tabs-module__zQxafG__tabInactive:hover {
+  background-color: var(--white-color);
+  color: var(--dark-text);
+}
+
+.Tabs-module__zQxafG__tabActive {
+  background-color: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 128, 128, .2);
+}
+
+/* [project]/app/components/styles/VideoDownloader.module.css [app-client] (css) */
+.VideoDownloader-module__ENrLMa__container {
+  background-color: var(--white-color);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all .3s ease-in-out;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -2px rgba(0, 0, 0, .1);
+}
+
+.VideoDownloader-module__ENrLMa__container:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .1);
+}
+
+@apply text-xl font-semibold mb-6;
+
+.VideoDownloader-module__ENrLMa__title {
+  color: var(--dark-text);
+}
+
+@apply space-y-4;
+
+.VideoDownloader-module__ENrLMa__inputSection {
+  margin-bottom: 2rem;
+}
+
+@apply flex gap-3;
+
+.VideoDownloader-module__ENrLMa__inputGroup {
+  flex-direction: column;
+  gap: 1rem;
+  display: flex;
+}
+
+@media (min-width: 640px) {
+  .VideoDownloader-module__ENrLMa__inputGroup {
+    flex-direction: row;
+  }
+}
+
+@apply flex-1 px-4 py-3 border rounded-lg transition-colors;
+
+.VideoDownloader-module__ENrLMa__urlInput {
+  border: 2px solid var(--border-color);
+  background-color: var(--white-color);
+  color: var(--dark-text);
+  border-radius: .75rem;
+  outline: none;
+  flex: 1;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  transition: all .3s;
+}
+
+.VideoDownloader-module__ENrLMa__urlInput:focus {
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, .1);
+}
+
+.VideoDownloader-module__ENrLMa__urlInput::placeholder {
+  color: var(--text-color);
+}
+
+@apply px-6 py-3 text-white font-medium rounded-lg transition-colors;
+
+.VideoDownloader-module__ENrLMa__analyzeButton {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+  border-radius: .75rem;
+  justify-content: center;
+  align-items: center;
+  gap: .75rem;
+  min-width: 160px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all .3s cubic-bezier(.4, 0, .2, 1);
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton:before {
+  content: "";
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+  opacity: 0;
+  transition: opacity .3s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton:hover:before {
+  opacity: 1;
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 128, 128, .3);
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton:active {
+  transform: translateY(0);
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton:disabled {
+  background: var(--text-color);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton:disabled:before {
+  display: none;
+}
+
+.VideoDownloader-module__ENrLMa__analyzeButton span {
+  z-index: 1;
+  position: relative;
+}
+
+@apply w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin;
+
+.VideoDownloader-module__ENrLMa__loadingSpinner {
+  z-index: 1;
+  border: 2px solid rgba(255, 255, 255, .3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  animation: 1s linear infinite VideoDownloader-module__ENrLMa__spin;
+  position: relative;
+}
+
+@keyframes VideoDownloader-module__ENrLMa__spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@apply space-y-4 p-4 border rounded-lg;
+
+.VideoDownloader-module__ENrLMa__videoInfo {
+  background: linear-gradient(135deg, var(--background-color), rgba(0, 128, 128, .05));
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  animation: .5s ease-out VideoDownloader-module__ENrLMa__fadeInUp;
+}
+
+@apply font-semibold;
+
+.VideoDownloader-module__ENrLMa__videoTitle {
+  color: var(--dark-text);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+@apply flex gap-4 text-sm;
+
+.VideoDownloader-module__ENrLMa__videoMeta {
+  color: var(--text-color);
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: .875rem;
+  display: flex;
+}
+
+.VideoDownloader-module__ENrLMa__videoMeta span {
+  background: rgba(0, 128, 128, .1);
+  border: 1px solid rgba(0, 128, 128, .2);
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  font-weight: 500;
+}
+
+@apply w-full max-w-xs rounded-lg shadow-sm;
+
+.VideoDownloader-module__ENrLMa__thumbnail {
+  border-radius: .75rem;
+  width: 100%;
+  max-width: 20rem;
+  height: auto;
+  transition: transform .3s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1);
+}
+
+.VideoDownloader-module__ENrLMa__thumbnail:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 640px) {
+  .VideoDownloader-module__ENrLMa__container {
+    padding: 1.5rem;
+  }
+
+  .VideoDownloader-module__ENrLMa__urlInput {
+    padding: .875rem 1rem;
+    font-size: .875rem;
+  }
+
+  .VideoDownloader-module__ENrLMa__analyzeButton {
+    min-width: 140px;
+    padding: .875rem 1.5rem;
+    font-size: .875rem;
+  }
+
+  .VideoDownloader-module__ENrLMa__videoInfo {
+    padding: 1.5rem;
+  }
+}
+
+.VideoDownloader-module__ENrLMa__dark .VideoDownloader-module__ENrLMa__container {
+  background-color: var(--white-color);
+  border-color: var(--border-color);
+}
+
+.VideoDownloader-module__ENrLMa__dark .VideoDownloader-module__ENrLMa__urlInput {
+  background-color: var(--white-color);
+  border-color: var(--border-color);
+  color: var(--dark-text);
+}
+
+.VideoDownloader-module__ENrLMa__dark .VideoDownloader-module__ENrLMa__videoInfo {
+  background: linear-gradient(135deg, var(--background-color), rgba(0, 128, 128, .1));
+}
+
+/* [project]/app/components/styles/HomeTab.module.css [app-client] (css) */
+.HomeTab-module__pAb1IG__container {
+  flex-direction: column;
+  gap: 2rem;
+  display: flex;
+}
+
+.HomeTab-module__pAb1IG__pasteSection {
+  background-color: var(--white-color);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: .5rem;
+  padding: 3rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.HomeTab-module__pAb1IG__pasteContent {
+  text-align: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  display: flex;
+}
+
+.HomeTab-module__pAb1IG__pasteTitle {
+  color: var(--dark-text);
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2rem;
+}
+
+.HomeTab-module__pAb1IG__pasteButton {
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  cursor: pointer;
+  border: none;
+  border-radius: .5rem;
+  align-items: center;
+  gap: .75rem;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  transition: all .2s ease-in-out;
+  display: inline-flex;
+  transform: scale(1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .1);
+}
+
+.HomeTab-module__pAb1IG__pasteButton:hover {
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .1), 0 8px 10px -6px rgba(0, 0, 0, .1);
+}
+
+.HomeTab-module__pAb1IG__pasteIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.HomeTab-module__pAb1IG__messageBox {
+  border: 1px solid;
+  border-color: var(--primary-color);
+  background-color: rgba(0, 128, 128, .1);
+  border-radius: .5rem;
+  margin-top: 1rem;
+  padding: .75rem;
+}
+
+.HomeTab-module__pAb1IG__messageText {
+  color: var(--primary-color);
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.HomeTab-module__pAb1IG__featuresSection {
+  background-color: var(--white-color);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.HomeTab-module__pAb1IG__featuresTitle {
+  color: var(--dark-text);
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+}
+
+.HomeTab-module__pAb1IG__featuresGrid {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+  display: grid;
+}
+
+@media (min-width: 768px) {
+  .HomeTab-module__pAb1IG__featuresGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.HomeTab-module__pAb1IG__featureCard {
+  text-align: center;
+  background-color: var(--background-color);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .15s ease-in-out;
+}
+
+.HomeTab-module__pAb1IG__featureCard:hover {
+  transform: scale(1.05);
+}
+
+.HomeTab-module__pAb1IG__youtubeCard {
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  border-color: #fca5a5;
+}
+
+.HomeTab-module__pAb1IG__twitchCard {
+  background: linear-gradient(135deg, #faf5ff, #e9d5ff);
+  border-color: #c4b5fd;
+}
+
+.HomeTab-module__pAb1IG__spotifyCard {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-color: #86efac;
+}
+
+.HomeTab-module__pAb1IG__featureIcon {
+  margin-bottom: .75rem;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.HomeTab-module__pAb1IG__featureTitle {
+  color: var(--dark-text);
+  margin-bottom: .5rem;
+  font-weight: 600;
+}
+
+.HomeTab-module__pAb1IG__featureDescription {
+  color: var(--text-color);
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+/* [project]/app/components/styles/SettingsTab.module.css [app-client] (css) */
+.SettingsTab-module__nPAEPq__container {
+  flex-direction: column;
+  gap: 2rem;
+  display: flex;
+}
+
+.SettingsTab-module__nPAEPq__section {
+  background-color: var(--white-color);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: .5rem;
+  padding: 2rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.SettingsTab-module__nPAEPq__sectionTitle {
+  color: var(--dark-text);
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+}
+
+.SettingsTab-module__nPAEPq__accountGrid {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem 3rem;
+  display: grid;
+}
+
+@media (min-width: 768px) {
+  .SettingsTab-module__nPAEPq__accountGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.SettingsTab-module__nPAEPq__accountItem {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.SettingsTab-module__nPAEPq__accountLabel {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.SettingsTab-module__nPAEPq__accountValue {
+  color: var(--dark-text);
+}
+
+.SettingsTab-module__nPAEPq__statusBadge {
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 9999px;
+  padding: .25rem .75rem;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+}
+
+.SettingsTab-module__nPAEPq__actionButton {
+  color: #fff;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  border: none;
+  border-radius: .5rem;
+  margin-top: 2rem;
+  padding: .5rem 1.5rem;
+  font-weight: 500;
+  transition: background-color .15s ease-in-out;
+}
+
+.SettingsTab-module__nPAEPq__actionButton:hover {
+  background-color: var(--primary-hover);
+}
+
+.SettingsTab-module__nPAEPq__benefitsGrid {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+  display: grid;
+}
+
+@media (min-width: 768px) {
+  .SettingsTab-module__nPAEPq__benefitsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.SettingsTab-module__nPAEPq__benefitItem {
+  align-items: flex-start;
+  gap: .75rem;
+  display: flex;
+}
+
+.SettingsTab-module__nPAEPq__benefitIcon {
+  color: var(--primary-color);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.SettingsTab-module__nPAEPq__benefitTitle {
+  color: var(--dark-text);
+  font-weight: 600;
+}
+
+.SettingsTab-module__nPAEPq__benefitDescription {
+  color: var(--text-color);
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+/* [project]/app/components/styles/HistoryPanel.module.css [app-client] (css) */
+.HistoryPanel-module__dLq40G__container {
+  background-color: var(--white-color);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: .5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.HistoryPanel-module__dLq40G__header {
+  border-bottom: 1px solid;
+  border-color: var(--border-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  display: flex;
+}
+
+.HistoryPanel-module__dLq40G__title {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+}
+
+.HistoryPanel-module__dLq40G__controls {
+  gap: .5rem;
+  display: flex;
+}
+
+.HistoryPanel-module__dLq40G__controlButton {
+  color: #fff;
+  cursor: pointer;
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: .5rem;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: all .15s ease-in-out;
+  display: flex;
+}
+
+.HistoryPanel-module__dLq40G__controlButton:hover {
+  background: rgba(255, 255, 255, .2);
+  transform: scale(1.05);
+}
+
+.HistoryPanel-module__dLq40G__controlIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.HistoryPanel-module__dLq40G__toggleIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: transform .3s ease-in-out;
+}
+
+.HistoryPanel-module__dLq40G__toggleIconOpen {
+  transform: rotate(180deg);
+}
+
+.HistoryPanel-module__dLq40G__content {
+  max-height: 32rem;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.HistoryPanel-module__dLq40G__grid {
+  gap: 1.5rem;
+  display: grid;
+}
+
+.HistoryPanel-module__dLq40G__gridOneColumn, .HistoryPanel-module__dLq40G__gridTwoColumns {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .HistoryPanel-module__dLq40G__gridTwoColumns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.HistoryPanel-module__dLq40G__historyItem {
+  background-color: var(--background-color);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: .75rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  transition: all .2s ease-in-out;
+  display: flex;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .05);
+}
+
+.HistoryPanel-module__dLq40G__historyItem:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .1);
+}
+
+.HistoryPanel-module__dLq40G__platformIcon {
+  border-radius: .75rem;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1);
+}
+
+.HistoryPanel-module__dLq40G__youtubePlatform {
+  color: #dc2626;
+  background: linear-gradient(135deg, #fee2e2, #fca5a5);
+}
+
+.HistoryPanel-module__dLq40G__twitchPlatform {
+  color: #7c3aed;
+  background: linear-gradient(135deg, #e9d5ff, #c4b5fd);
+}
+
+.HistoryPanel-module__dLq40G__spotifyPlatform {
+  color: #16a34a;
+  background: linear-gradient(135deg, #dcfce7, #86efac);
+}
+
+.HistoryPanel-module__dLq40G__defaultPlatform {
+  background: linear-gradient(135deg, var(--background-color), var(--border-color));
+  color: var(--text-color);
+}
+
+.HistoryPanel-module__dLq40G__dark .HistoryPanel-module__dLq40G__youtubePlatform {
+  color: #fca5a5;
+  background: linear-gradient(135deg, rgba(127, 29, 29, .3), rgba(153, 27, 27, .3));
+}
+
+.HistoryPanel-module__dLq40G__dark .HistoryPanel-module__dLq40G__twitchPlatform {
+  color: #c4b5fd;
+  background: linear-gradient(135deg, rgba(88, 28, 135, .3), rgba(107, 33, 168, .3));
+}
+
+.HistoryPanel-module__dLq40G__dark .HistoryPanel-module__dLq40G__spotifyPlatform {
+  color: #86efac;
+  background: linear-gradient(135deg, rgba(20, 83, 45, .3), rgba(22, 101, 52, .3));
+}
+
+.HistoryPanel-module__dLq40G__iconEmoji {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.HistoryPanel-module__dLq40G__fileInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.HistoryPanel-module__dLq40G__fileTitle {
+  color: var(--dark-text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: .5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  overflow: hidden;
+}
+
+.HistoryPanel-module__dLq40G__fileDetails {
+  color: var(--text-color);
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-bottom: .5rem;
+  font-size: .75rem;
+  line-height: 1rem;
+  display: flex;
+}
+
+.HistoryPanel-module__dLq40G__fileDetails span {
+  background: rgba(0, 128, 128, .1);
+  border: 1px solid rgba(0, 128, 128, .2);
+  border-radius: .375rem;
+  padding: .25rem .5rem;
+}
+
+.HistoryPanel-module__dLq40G__fileDate {
+  color: var(--text-color);
+  opacity: .8;
+  font-size: .75rem;
+  line-height: 1rem;
+}
+
+.HistoryPanel-module__dLq40G__actions {
+  flex-shrink: 0;
+  gap: .5rem;
+  display: flex;
+}
+
+.HistoryPanel-module__dLq40G__actionButton {
+  background: var(--white-color);
+  border: 1px solid;
+  border-color: var(--border-color);
+  cursor: pointer;
+  border-radius: .5rem;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: all .15s ease-in-out;
+  display: flex;
+}
+
+.HistoryPanel-module__dLq40G__downloadButton {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.HistoryPanel-module__dLq40G__downloadButton:hover {
+  background: var(--primary-color);
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 128, 128, .3);
+}
+
+.HistoryPanel-module__dLq40G__deleteButton {
+  color: #dc2626;
+  border-color: #dc2626;
+}
+
+.HistoryPanel-module__dLq40G__deleteButton:hover {
+  color: #fff;
+  background: #dc2626;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, .3);
+}
+
+.HistoryPanel-module__dLq40G__actionIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.HistoryPanel-module__dLq40G__emptyState {
+  text-align: center;
+  color: var(--text-color);
+  padding: 3rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.HistoryPanel-module__dLq40G__emptyState:before {
+  content: "📁";
+  opacity: .5;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  display: block;
+}
+
+.HistoryPanel-module__dLq40G__content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.HistoryPanel-module__dLq40G__content::-webkit-scrollbar-track {
+  background: var(--background-color);
+  border-radius: 3px;
+}
+
+.HistoryPanel-module__dLq40G__content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.HistoryPanel-module__dLq40G__content::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
+}
+
+@keyframes HistoryPanel-module__dLq40G__slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.HistoryPanel-module__dLq40G__historyItem {
+  animation: .3s ease-out forwards HistoryPanel-module__dLq40G__slideInUp;
+}
+
+.HistoryPanel-module__dLq40G__historyItem:first-child {
+  animation-delay: .1s;
+}
+
+.HistoryPanel-module__dLq40G__historyItem:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.HistoryPanel-module__dLq40G__historyItem:nth-child(3) {
+  animation-delay: .3s;
+}
+
+.HistoryPanel-module__dLq40G__historyItem:nth-child(4) {
+  animation-delay: .4s;
+}
+
+/*# sourceMappingURL=app_components_styles_13babde9._.css.map*/
