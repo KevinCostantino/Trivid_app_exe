@@ -1,0 +1,134 @@
+.container {
+  @apply rounded-lg shadow-sm border p-6;
+  background-color: var(--white-color);
+  border-color: var(--border-color);
+}
+
+.title {
+  @apply text-xl font-semibold mb-6;
+  color: var(--dark-text);
+}
+
+.inputSection {
+  @apply space-y-4;
+}
+
+.inputGroup {
+  @apply flex gap-3;
+}
+
+.urlInput {
+  @apply flex-1 px-4 py-3 border rounded-lg transition-colors;
+  background-color: var(--white-color);
+  border-color: var(--border-color);
+  color: var(--dark-text);
+}
+
+.urlInput:focus {
+  outline: none;
+  border-color: var(--focus-color);
+  box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.1);
+}
+
+.analyzeButton {
+  @apply px-6 py-3 text-white font-medium rounded-lg transition-colors;
+  background-color: var(--primary-color);
+}
+
+.analyzeButton:hover {
+  background-color: var(--primary-hover);
+}
+
+.analyzeButton:disabled {
+  background-color: var(--text-color);
+  cursor: not-allowed;
+}
+
+.loadingSpinner {
+  @apply w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin;
+}
+
+.errorMessage {
+  @apply p-3 border rounded-lg;
+  background-color: #fee2e2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+.videoInfo {
+  @apply space-y-4 p-4 border rounded-lg;
+  background-color: var(--background-color);
+  border-color: var(--border-color);
+}
+
+.videoTitle {
+  @apply font-semibold;
+  color: var(--dark-text);
+}
+
+.videoMeta {
+  @apply flex gap-4 text-sm;
+  color: var(--text-color);
+}
+
+.thumbnail {
+  @apply w-full max-w-xs rounded-lg shadow-sm;
+}
+
+.formatSection {
+  @apply space-y-3;
+}
+
+.formatLabel {
+  @apply block font-medium;
+  color: var(--dark-text);
+}
+
+.formatSelect {
+  @apply w-full px-3 py-2 border rounded-lg;
+  background-color: var(--white-color);
+  border-color: var(--border-color);
+  color: var(--dark-text);
+}
+
+.formatSelect:focus {
+  outline: none;
+  border-color: var(--focus-color);
+}
+
+.downloadActions {
+  @apply flex gap-3 pt-4;
+}
+
+.downloadButton {
+  @apply px-6 py-3 text-white font-medium rounded-lg transition-colors;
+  background-color: var(--secondary-color);
+}
+
+.downloadButton:hover {
+  background-color: var(--primary-hover);
+}
+
+.downloadButton:disabled {
+  background-color: var(--text-color);
+  cursor: not-allowed;
+}
+
+.progressSection {
+  @apply space-y-2;
+}
+
+.progressBar {
+  @apply w-full h-2 rounded-full overflow-hidden;
+  background-color: var(--background-color);
+}
+
+.progressFill {
+  @apply h-full transition-all duration-300;
+  background-color: var(--primary-color);
+}
+
+.progressText {
+  @apply text-sm;
+  color: var(--text-color);
+}

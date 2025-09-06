@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Kevin/Desktop/first%20saas/frontend/app/components/styles/TitleBar.module.css"],"sourcesContent":["\r\n"],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Kevin/Desktop/first%20saas/frontend/app/components/styles/HomeTab.module.css"],"sourcesContent":["\r\n"],"names":[],"mappings":"","debugId":null}}]
+}

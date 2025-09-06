@@ -1,0 +1,147 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pasteSection {
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  border: 1px solid;
+  padding: 3rem;
+  background-color: var(--white-color);
+  border-color: var(--border-color);
+}
+
+.pasteContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pasteTitle {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: var(--dark-text);
+}
+
+.pasteButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  color: white;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+  transform: scale(1);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border: none;
+  cursor: pointer;
+}
+
+.pasteButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+}
+
+.pasteIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.messageBox {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: 1px solid;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 128, 128, 0.1);
+  border-color: var(--primary-color);
+}
+
+.messageText {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--primary-color);
+}
+
+.featuresSection {
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  border: 1px solid;
+  padding: 1.5rem;
+  background-color: var(--white-color);
+  border-color: var(--border-color);
+}
+
+.featuresTitle {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--dark-text);
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .featuresGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.featureCard {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid;
+  transition: transform 0.15s ease-in-out;
+  background-color: var(--background-color);
+  border-color: var(--border-color);
+}
+
+.featureCard:hover {
+  transform: scale(1.05);
+}
+
+.youtubeCard {
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  border-color: #fca5a5;
+}
+
+.twitchCard {
+  background: linear-gradient(135deg, #faf5ff, #e9d5ff);
+  border-color: #c4b5fd;
+}
+
+.spotifyCard {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-color: #86efac;
+}
+
+.featureIcon {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.featureTitle {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--dark-text);
+}
+
+.featureDescription {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--text-color);
+}

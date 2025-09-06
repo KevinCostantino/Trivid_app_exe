@@ -1,0 +1,160 @@
+/* [project]/app/components/styles/TitleBar.module.css [app-client] (css) */
+.TitleBar-module__zm9PcG__titleBar {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  background-color: var(--primary-hover);
+  border-bottom: 2px solid var(--secondary-color);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  -webkit-app-region: drag;
+  justify-content: space-between;
+  align-items: center;
+  height: 8rem;
+  padding: 0 2rem;
+  display: flex;
+}
+
+.TitleBar-module__zm9PcG__dark .TitleBar-module__zm9PcG__titleBar {
+  background-color: var(--primary-color);
+  border-bottom-color: var(--secondary-color);
+}
+
+.TitleBar-module__zm9PcG__titleBarContent {
+  align-items: center;
+  gap: 2rem;
+  display: flex;
+}
+
+.TitleBar-module__zm9PcG__logo {
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 10.5rem;
+  height: 10.5rem;
+  display: flex;
+}
+
+.TitleBar-module__zm9PcG__logoImage {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.TitleBar-module__zm9PcG__logoText {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3rem;
+}
+
+.TitleBar-module__zm9PcG__titleText {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.TitleBar-module__zm9PcG__subtitleText {
+  color: rgba(255, 255, 255, .9);
+  margin-left: 1rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.TitleBar-module__zm9PcG__controls {
+  -webkit-app-region: no-drag;
+  gap: .5rem;
+  display: flex;
+}
+
+.TitleBar-module__zm9PcG__controlButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: .75rem;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  transition: background-color .15s ease-in-out;
+  display: flex;
+}
+
+.TitleBar-module__zm9PcG__controlButton:hover {
+  background-color: rgba(255, 255, 255, .2);
+}
+
+.TitleBar-module__zm9PcG__closeButton {
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: .75rem;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  transition: background-color .15s ease-in-out;
+  display: flex;
+}
+
+.TitleBar-module__zm9PcG__closeButton:hover {
+  background-color: #ef4444;
+}
+
+.TitleBar-module__zm9PcG__minimizeIcon {
+  background-color: #fff;
+  width: 1.5rem;
+  height: .25rem;
+}
+
+.TitleBar-module__zm9PcG__controlButton:hover .TitleBar-module__zm9PcG__minimizeIcon {
+  background-color: #fff;
+}
+
+.TitleBar-module__zm9PcG__maximizeIcon {
+  border: 2px solid #fff;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.TitleBar-module__zm9PcG__controlButton:hover .TitleBar-module__zm9PcG__maximizeIcon {
+  border-color: #fff;
+}
+
+.TitleBar-module__zm9PcG__closeIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+}
+
+.TitleBar-module__zm9PcG__closeIconLine {
+  background-color: #fff;
+  width: 1.5rem;
+  height: .25rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.TitleBar-module__zm9PcG__closeIconLine1 {
+  transform: rotate(45deg)translateY(.5rem);
+}
+
+.TitleBar-module__zm9PcG__closeIconLine2 {
+  transform: rotate(-45deg)translateY(.5rem);
+}
+
+.TitleBar-module__zm9PcG__closeButton:hover .TitleBar-module__zm9PcG__closeIconLine {
+  background-color: #fff;
+}
+
+/*# sourceMappingURL=app_components_styles_TitleBar_module_css_bad6b30c._.single.css.map*/

@@ -1,0 +1,113 @@
+/* [project]/app/components/styles/SettingsTab.module.css [app-client] (css) */
+.SettingsTab-module__nPAEPq__container {
+  flex-direction: column;
+  gap: 2rem;
+  display: flex;
+}
+
+.SettingsTab-module__nPAEPq__section {
+  background-color: var(--white-color);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: .5rem;
+  padding: 2rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.SettingsTab-module__nPAEPq__sectionTitle {
+  color: var(--dark-text);
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+}
+
+.SettingsTab-module__nPAEPq__accountGrid {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem 3rem;
+  display: grid;
+}
+
+@media (min-width: 768px) {
+  .SettingsTab-module__nPAEPq__accountGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.SettingsTab-module__nPAEPq__accountItem {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.SettingsTab-module__nPAEPq__accountLabel {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.SettingsTab-module__nPAEPq__accountValue {
+  color: var(--dark-text);
+}
+
+.SettingsTab-module__nPAEPq__statusBadge {
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: 9999px;
+  padding: .25rem .75rem;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+}
+
+.SettingsTab-module__nPAEPq__actionButton {
+  color: #fff;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  border: none;
+  border-radius: .5rem;
+  margin-top: 2rem;
+  padding: .5rem 1.5rem;
+  font-weight: 500;
+  transition: background-color .15s ease-in-out;
+}
+
+.SettingsTab-module__nPAEPq__actionButton:hover {
+  background-color: var(--primary-hover);
+}
+
+.SettingsTab-module__nPAEPq__benefitsGrid {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+  display: grid;
+}
+
+@media (min-width: 768px) {
+  .SettingsTab-module__nPAEPq__benefitsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.SettingsTab-module__nPAEPq__benefitItem {
+  align-items: flex-start;
+  gap: .75rem;
+  display: flex;
+}
+
+.SettingsTab-module__nPAEPq__benefitIcon {
+  color: var(--primary-color);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.SettingsTab-module__nPAEPq__benefitTitle {
+  color: var(--dark-text);
+  font-weight: 600;
+}
+
+.SettingsTab-module__nPAEPq__benefitDescription {
+  color: var(--text-color);
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+/*# sourceMappingURL=app_components_styles_SettingsTab_module_css_bad6b30c._.single.css.map*/

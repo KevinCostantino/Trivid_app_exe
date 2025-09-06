@@ -1,0 +1,150 @@
+/* [project]/app/components/styles/HomeTab.module.css [app-client] (css) */
+.HomeTab-module__pAb1IG__container {
+  flex-direction: column;
+  gap: 2rem;
+  display: flex;
+}
+
+.HomeTab-module__pAb1IG__pasteSection {
+  background-color: var(--white-color);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: .5rem;
+  padding: 3rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.HomeTab-module__pAb1IG__pasteContent {
+  text-align: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  display: flex;
+}
+
+.HomeTab-module__pAb1IG__pasteTitle {
+  color: var(--dark-text);
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2rem;
+}
+
+.HomeTab-module__pAb1IG__pasteButton {
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  cursor: pointer;
+  border: none;
+  border-radius: .5rem;
+  align-items: center;
+  gap: .75rem;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  transition: all .2s ease-in-out;
+  display: inline-flex;
+  transform: scale(1);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .1);
+}
+
+.HomeTab-module__pAb1IG__pasteButton:hover {
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .1), 0 8px 10px -6px rgba(0, 0, 0, .1);
+}
+
+.HomeTab-module__pAb1IG__pasteIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.HomeTab-module__pAb1IG__messageBox {
+  border: 1px solid;
+  border-color: var(--primary-color);
+  background-color: rgba(0, 128, 128, .1);
+  border-radius: .5rem;
+  margin-top: 1rem;
+  padding: .75rem;
+}
+
+.HomeTab-module__pAb1IG__messageText {
+  color: var(--primary-color);
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+.HomeTab-module__pAb1IG__featuresSection {
+  background-color: var(--white-color);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
+
+.HomeTab-module__pAb1IG__featuresTitle {
+  color: var(--dark-text);
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+}
+
+.HomeTab-module__pAb1IG__featuresGrid {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+  display: grid;
+}
+
+@media (min-width: 768px) {
+  .HomeTab-module__pAb1IG__featuresGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.HomeTab-module__pAb1IG__featureCard {
+  text-align: center;
+  background-color: var(--background-color);
+  border: 1px solid;
+  border-color: var(--border-color);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .15s ease-in-out;
+}
+
+.HomeTab-module__pAb1IG__featureCard:hover {
+  transform: scale(1.05);
+}
+
+.HomeTab-module__pAb1IG__youtubeCard {
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  border-color: #fca5a5;
+}
+
+.HomeTab-module__pAb1IG__twitchCard {
+  background: linear-gradient(135deg, #faf5ff, #e9d5ff);
+  border-color: #c4b5fd;
+}
+
+.HomeTab-module__pAb1IG__spotifyCard {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-color: #86efac;
+}
+
+.HomeTab-module__pAb1IG__featureIcon {
+  margin-bottom: .75rem;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.HomeTab-module__pAb1IG__featureTitle {
+  color: var(--dark-text);
+  margin-bottom: .5rem;
+  font-weight: 600;
+}
+
+.HomeTab-module__pAb1IG__featureDescription {
+  color: var(--text-color);
+  font-size: .875rem;
+  line-height: 1.25rem;
+}
+
+/*# sourceMappingURL=app_components_styles_HomeTab_module_css_bad6b30c._.single.css.map*/
