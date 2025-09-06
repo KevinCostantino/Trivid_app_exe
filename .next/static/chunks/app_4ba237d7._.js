@@ -309,17 +309,21 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 function VideoDownloader() {
+    var _videoInfo_quality;
     _s();
     const [url, setUrl] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [videoInfo, setVideoInfo] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
     const getVideoInfo = async ()=>{
-        if (!url) return;
+        if (!url) {
+            setError('Por favor, insira uma URL válida');
+            return;
+        }
         setLoading(true);
         setError(null);
         try {
-            // Usar a rota reescrita do Next.js
+            // Usar a API route do Next.js em vez do backend direto
             const response = await fetch('/api/video/info', {
                 method: 'POST',
                 headers: {
@@ -329,80 +333,107 @@ function VideoDownloader() {
                     url
                 })
             });
-            if (!response.ok) {
-                throw new Error("Erro: ".concat(response.status));
-            }
             const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.error || "Erro: ".concat(response.status));
+            }
             setVideoInfo(data);
+            console.log('✅ Vídeo carregado:', data);
         } catch (error) {
-            console.error('Erro ao buscar vídeo:', error);
-            setError('Erro ao buscar informações do vídeo. Verifique se o backend está rodando.');
-            // Fallback com dados simulados para desenvolvimento
-            setVideoInfo({
-                title: 'Vídeo de Exemplo (Simulado)',
-                thumbnail: '',
-                duration: '5:30',
-                channel: 'Canal Exemplo'
-            });
+            console.error('❌ Erro ao buscar vídeo:', error);
+            setError(error.message || 'Erro ao processar o vídeo. Tente novamente.');
         } finally{
             setLoading(false);
         }
+    };
+    const handleDownload = (format)=>{
+        if (!videoInfo) return;
+        // Simulação de download
+        const fileName = "".concat(videoInfo.title.replace(/[^a-zA-Z0-9]/g, '_'), ".").concat(format.toLowerCase().includes('mp3') ? 'mp3' : 'mp4');
+        alert("✅ Download iniciado: ".concat(fileName));
+        console.log('📥 Download:', {
+            url,
+            format,
+            videoInfo
+        });
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].container,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].inputSection,
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].inputGroup,
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                            type: "text",
-                            placeholder: "Cole a URL do YouTube aqui...",
-                            value: url,
-                            onChange: (e)=>setUrl(e.target.value),
-                            className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].urlInput
-                        }, void 0, false, {
-                            fileName: "[project]/app/components/VideoDownloader.tsx",
-                            lineNumber: 55,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            onClick: getVideoInfo,
-                            disabled: loading,
-                            className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].analyzeButton,
-                            children: loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].loadingSpinner
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/VideoDownloader.tsx",
-                                        lineNumber: 69,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        children: "Analisando..."
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/VideoDownloader.tsx",
-                                        lineNumber: 70,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true) : 'Buscar Vídeo'
-                        }, void 0, false, {
-                            fileName: "[project]/app/components/VideoDownloader.tsx",
-                            lineNumber: 62,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/app/components/VideoDownloader.tsx",
-                    lineNumber: 54,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].sectionTitle,
+                        children: "📺 Baixar Vídeo do YouTube"
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/VideoDownloader.tsx",
+                        lineNumber: 62,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].inputGroup,
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                type: "text",
+                                placeholder: "Cole a URL do YouTube aqui... (ex: https://www.youtube.com/watch?v=dQw4w9WgXcQ)",
+                                value: url,
+                                onChange: (e)=>setUrl(e.target.value),
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].urlInput,
+                                onKeyPress: (e)=>e.key === 'Enter' && !loading && getVideoInfo()
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/VideoDownloader.tsx",
+                                lineNumber: 64,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: getVideoInfo,
+                                disabled: loading,
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].analyzeButton,
+                                children: loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].loadingSpinner
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/VideoDownloader.tsx",
+                                            lineNumber: 79,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            children: "Analisando..."
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/VideoDownloader.tsx",
+                                            lineNumber: 80,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                    children: [
+                                        "🔍 ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            children: "Analisar Vídeo"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/VideoDownloader.tsx",
+                                            lineNumber: 84,
+                                            columnNumber: 20
+                                        }, this)
+                                    ]
+                                }, void 0, true)
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/VideoDownloader.tsx",
+                                lineNumber: 72,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/components/VideoDownloader.tsx",
+                        lineNumber: 63,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
                 fileName: "[project]/app/components/VideoDownloader.tsx",
-                lineNumber: 53,
+                lineNumber: 61,
                 columnNumber: 7
             }, this),
             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -414,52 +445,71 @@ function VideoDownloader() {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/components/VideoDownloader.tsx",
-                    lineNumber: 82,
+                    lineNumber: 94,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/components/VideoDownloader.tsx",
-                lineNumber: 81,
+                lineNumber: 93,
                 columnNumber: 9
             }, this),
             videoInfo && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].videoInfo,
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].videoTitle,
-                        children: videoInfo.title
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/VideoDownloader.tsx",
-                        lineNumber: 89,
-                        columnNumber: 11
-                    }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].videoMeta,
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].videoHeader,
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                children: [
-                                    "📺 Canal: ",
-                                    videoInfo.channel
-                                ]
-                            }, void 0, true, {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].videoTitle,
+                                children: videoInfo.title
+                            }, void 0, false, {
                                 fileName: "[project]/app/components/VideoDownloader.tsx",
-                                lineNumber: 91,
+                                lineNumber: 102,
                                 columnNumber: 13
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].videoMeta,
                                 children: [
-                                    "⏱️ Duração: ",
-                                    videoInfo.duration
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: [
+                                            "📺 ",
+                                            videoInfo.channel
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/components/VideoDownloader.tsx",
+                                        lineNumber: 104,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: [
+                                            "⏱️ ",
+                                            videoInfo.duration
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/components/VideoDownloader.tsx",
+                                        lineNumber: 105,
+                                        columnNumber: 15
+                                    }, this),
+                                    videoInfo.views && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        children: [
+                                            "👁️ ",
+                                            videoInfo.views
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/components/VideoDownloader.tsx",
+                                        lineNumber: 106,
+                                        columnNumber: 35
+                                    }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/VideoDownloader.tsx",
-                                lineNumber: 92,
+                                lineNumber: 103,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/VideoDownloader.tsx",
-                        lineNumber: 90,
+                        lineNumber: 101,
                         columnNumber: 11
                     }, this),
                     videoInfo.thumbnail && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -469,54 +519,129 @@ function VideoDownloader() {
                             alt: "Thumbnail do vídeo",
                             className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].thumbnail,
                             onError: (e)=>{
-                                // Fallback se a imagem não carregar
-                                e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNDcuNSA2Ny41TDE3Mi41IDgyLjVMMTQ3LjUgOTcuNVY2Ny41WiIgZmlsbD0iIzlDQTNBRiIvPgo8L3N2Zz4K';
+                                e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDQ4MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0ODAiIGhlaWdodD0iMzYwIiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjI0MCIgY3k9IjE4MCIgcj0iNDAiIGZpbGw9IiM5Q0EzQUYiLz4KPHBhdGggZD0iTTIzMCAxNjBMMjYwIDE4MEwyMzAgMjAwVjE2MFoiIGZpbGw9IndoaXRlIi8+Cjx0ZXh0IHg9IjI0MCIgeT0iMjQwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOUNBM0FGIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiPkVycm8gYW8gY2FycmVnYXIgaW1hZ2VtPC90ZXh0Pgo8L3N2Zz4K';
                             }
                         }, void 0, false, {
                             fileName: "[project]/app/components/VideoDownloader.tsx",
-                            lineNumber: 96,
+                            lineNumber: 112,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/components/VideoDownloader.tsx",
-                        lineNumber: 95,
+                        lineNumber: 111,
                         columnNumber: 13
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].downloadSection,
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].downloadButton,
-                                children: "📥 Download MP4"
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].downloadTitle,
+                                children: "📥 Opções de Download"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/VideoDownloader.tsx",
-                                lineNumber: 109,
+                                lineNumber: 124,
                                 columnNumber: 13
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].downloadButton,
-                                children: "🎵 Download MP3"
-                            }, void 0, false, {
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].formatGrid,
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].formatGroup,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h5", {
+                                                children: "🎬 Vídeo (MP4)"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/VideoDownloader.tsx",
+                                                lineNumber: 128,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].qualityButtons,
+                                                children: (_videoInfo_quality = videoInfo.quality) === null || _videoInfo_quality === void 0 ? void 0 : _videoInfo_quality.map((quality)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                        onClick: ()=>handleDownload("mp4_".concat(quality)),
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].downloadButton,
+                                                        children: quality
+                                                    }, quality, false, {
+                                                        fileName: "[project]/app/components/VideoDownloader.tsx",
+                                                        lineNumber: 131,
+                                                        columnNumber: 21
+                                                    }, this))
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/VideoDownloader.tsx",
+                                                lineNumber: 129,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/components/VideoDownloader.tsx",
+                                        lineNumber: 127,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].formatGroup,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h5", {
+                                                children: "🎵 Áudio (MP3)"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/VideoDownloader.tsx",
+                                                lineNumber: 143,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].qualityButtons,
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                        onClick: ()=>handleDownload('mp3_320'),
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].downloadButton,
+                                                        children: "320 kbps"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/VideoDownloader.tsx",
+                                                        lineNumber: 145,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                        onClick: ()=>handleDownload('mp3_128'),
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$VideoDownloader$2e$module$2e$css__$5b$app$2d$client$5d$__$28$css__module$29$__["default"].downloadButton,
+                                                        children: "128 kbps"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/VideoDownloader.tsx",
+                                                        lineNumber: 151,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/components/VideoDownloader.tsx",
+                                                lineNumber: 144,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/components/VideoDownloader.tsx",
+                                        lineNumber: 142,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
                                 fileName: "[project]/app/components/VideoDownloader.tsx",
-                                lineNumber: 112,
+                                lineNumber: 126,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/VideoDownloader.tsx",
-                        lineNumber: 108,
+                        lineNumber: 123,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/VideoDownloader.tsx",
-                lineNumber: 88,
+                lineNumber: 100,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/VideoDownloader.tsx",
-        lineNumber: 51,
+        lineNumber: 59,
         columnNumber: 5
     }, this);
 }
