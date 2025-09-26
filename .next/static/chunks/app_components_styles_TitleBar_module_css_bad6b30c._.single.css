@@ -1,4 +1,13 @@
 /* [project]/app/components/styles/TitleBar.module.css [app-client] (css) */
+::-webkit-scrollbar {
+  background: none;
+  width: 0;
+}
+
+.TitleBar-module__zm9PcG__titleBarContent, .TitleBar-module__zm9PcG__logo {
+  -webkit-app-region: drag;
+}
+
 .TitleBar-module__zm9PcG__titleBar {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -105,7 +114,40 @@
 }
 
 .TitleBar-module__zm9PcG__closeButton:hover {
-  background-color: #ef4444;
+  background: linear-gradient(90deg, #ff4d4f 0%, #ff7875 100%);
+  box-shadow: 0 2px 8px rgba(255, 0, 0, .15);
+}
+
+.TitleBar-module__zm9PcG__closeIcon {
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  position: relative;
+}
+
+.TitleBar-module__zm9PcG__closeIconLine {
+  background: #fff;
+  border-radius: 2px;
+  width: 100%;
+  height: .25rem;
+  transition: background .2s;
+  position: absolute;
+  top: 40%;
+  left: 0;
+}
+
+.TitleBar-module__zm9PcG__closeButton:hover .TitleBar-module__zm9PcG__closeIconLine {
+  background: #222;
+}
+
+.TitleBar-module__zm9PcG__closeIconLine1 {
+  transform: rotate(45deg);
+}
+
+.TitleBar-module__zm9PcG__closeIconLine2 {
+  transform: rotate(-45deg);
 }
 
 .TitleBar-module__zm9PcG__minimizeIcon {
@@ -126,31 +168,6 @@
 
 .TitleBar-module__zm9PcG__controlButton:hover .TitleBar-module__zm9PcG__maximizeIcon {
   border-color: #fff;
-}
-
-.TitleBar-module__zm9PcG__closeIcon {
-  width: 1.5rem;
-  height: 1.5rem;
-  position: relative;
-}
-
-.TitleBar-module__zm9PcG__closeIconLine {
-  background-color: #fff;
-  width: 1.5rem;
-  height: .25rem;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.TitleBar-module__zm9PcG__closeIconLine1 {
-  transform: rotate(45deg)translateY(.5rem);
-}
-
-.TitleBar-module__zm9PcG__closeIconLine2 {
-  transform: rotate(-45deg)translateY(.5rem);
 }
 
 .TitleBar-module__zm9PcG__closeButton:hover .TitleBar-module__zm9PcG__closeIconLine {

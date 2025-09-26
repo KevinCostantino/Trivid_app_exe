@@ -1,3 +1,14 @@
+/* Esconde a barra de rolagem lateral */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+.titleBarContent {
+  -webkit-app-region: drag;
+}
+.logo {
+  -webkit-app-region: drag;
+}
 .titleBar {
   display: flex;
   align-items: center;
@@ -104,7 +115,36 @@
 }
 
 .closeButton:hover {
-  background-color: #ef4444;
+  background: linear-gradient(90deg, #ff4d4f 0%, #ff7875 100%);
+  box-shadow: 0 2px 8px rgba(255,0,0,0.15);
+}
+
+.closeIcon {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.closeIconLine {
+  position: absolute;
+  left: 0;
+  top: 40%;
+  width: 100%;
+  height: 0.25rem;
+  background: #fff;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.closeButton:hover .closeIconLine {
+  background: #222;
+}
+.closeIconLine1 {
+  transform: rotate(45deg);
+}
+.closeIconLine2 {
+  transform: rotate(-45deg);
 }
 
 .minimizeIcon {
@@ -127,27 +167,6 @@
   border-color: white;
 }
 
-.closeIcon {
-  position: relative;
-  width: 1.5rem; /* Dobrado: 0.75rem * 2 = 1.5rem */
-  height: 1.5rem; /* Dobrado: 0.75rem * 2 = 1.5rem */
-}
-
-.closeIconLine {
-  position: absolute;
-  inset: 0;
-  width: 1.5rem; /* Dobrado: 0.75rem * 2 = 1.5rem */
-  height: 0.25rem; /* Dobrado: 0.125rem * 2 = 0.25rem */
-  background-color: white; /* Ícone branco para contraste */
-}
-
-.closeIconLine1 {
-  transform: rotate(45deg) translateY(0.5rem); /* Dobrado: 0.25rem * 2 = 0.5rem */
-}
-
-.closeIconLine2 {
-  transform: rotate(-45deg) translateY(0.5rem); /* Dobrado: 0.25rem * 2 = 0.5rem */
-}
 
 .closeButton:hover .closeIconLine {
   background-color: white;
