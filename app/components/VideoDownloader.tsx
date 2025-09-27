@@ -1,44 +1,44 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, forwardRef, useImperativeHandle } from 'react'
 import styles from './styles/VideoDownloader.module.css'
 
-export default function VideoDownloader() {
+const VideoDownloader = forwardRef(function VideoDownloader(_props, ref) {
+  useImperativeHandle(ref, () => ({
+    pasteAndSearch: (text: string) => {
+      setUrl(text)
+      getVideoInfo(text)
+    }
+  }))
   const [url, setUrl] = useState('')
   const [loading, setLoading] = useState(false)
   const [videoInfo, setVideoInfo] = useState<any>(null)
   const [error, setError] = useState<string | null>(null)
 
-  const getVideoInfo = async () => {
-    if (!url) return
-    
+  const getVideoInfo = async (customUrl?: string) => {
+    const finalUrl = customUrl ?? url
+    if (!finalUrl) return
     setLoading(true)
     setError(null)
-    
     try {
-      // Usar a rota reescrita do Next.js
       const response = await fetch('/api/video/info', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url: finalUrl, format_type: 'video_with_audio', quality: 'best' }),
       })
-
       if (!response.ok) {
         throw new Error(`Erro: ${response.status}`)
       }
-
       const data = await response.json()
       setVideoInfo(data)
     } catch (error) {
       console.error('Erro ao buscar vídeo:', error)
       setError('Erro ao buscar informações do vídeo. Verifique se o backend está rodando.')
-      
-      // Fallback com dados simulados para desenvolvimento
       setVideoInfo({
         title: 'Vídeo de Exemplo (Simulado)',
-        thumbnail: '', // Use imagem local
+        thumbnail: '',
         duration: '5:30',
         channel: 'Canal Exemplo'
       })
@@ -60,7 +60,7 @@ export default function VideoDownloader() {
             className={styles.urlInput}
           />
           <button
-            onClick={getVideoInfo}
+            onClick={() => getVideoInfo()}
             disabled={loading}
             className={styles.analyzeButton}
           >
@@ -117,4 +117,6 @@ export default function VideoDownloader() {
       )}
     </div>
   )
-}
+})
+
+export default VideoDownloader;

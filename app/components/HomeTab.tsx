@@ -1,46 +1,40 @@
 'use client'
 
-import { useState } from 'react'
+
+import { useRef } from 'react'
 import styles from './styles/HomeTab.module.css'
-import VideoDownloader from './VideoDownloader' // Verificar se está correto
+import VideoDownloader from './VideoDownloader'
+
 
 export default function HomeTab() {
-  const [message, setMessage] = useState<string | null>(null)
+  const videoDownloaderRef = useRef<any>(null)
 
-  const handlePaste = async () => {
+  const handlePasteAndSearch = async () => {
     try {
       const text = await navigator.clipboard.readText()
-      if (!text) {
-        setMessage('Nenhum texto encontrado na área de transferência')
-        return
+      if (!text) return
+      if (videoDownloaderRef.current) {
+        videoDownloaderRef.current.pasteAndSearch(text)
       }
-      setMessage(`Link detectado: ${text}`)
-    } catch {
-      setMessage('Erro ao acessar área de transferência')
-    }
+    } catch {}
   }
 
   return (
     <div className={styles.container}>
-      {/* Seção Cole URL */}
+      {/* Seção Colar e Buscar */}
       <div className={styles.pasteSection}>
         <div className={styles.pasteContent}>
-          <h2 className={styles.pasteTitle}>Cole sua URL aqui</h2>
-          <button onClick={handlePaste} className={styles.pasteButton}>
+          <h2 className={styles.pasteTitle}>Cole ou busque seu vídeo</h2>
+          <button onClick={handlePasteAndSearch} className={styles.pasteButton}>
             <span className={styles.pasteIcon}>📋</span>
-            Colar da Área de Transferência
+            Colar da Área de Transferência e Buscar
           </button>
-          {message && (
-            <div className={styles.messageBox}>
-              <span className={styles.messageText}>{message}</span>
-            </div>
-          )}
         </div>
       </div>
 
       {/* Video Downloader */}
-      <VideoDownloader />
-      
+      <VideoDownloader ref={videoDownloaderRef} />
+
       {/* Features Section */}
       <div className={styles.featuresSection}>
         <h2 className={styles.featuresTitle}>Plataformas Suportadas</h2>
