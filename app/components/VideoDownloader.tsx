@@ -1,36 +1,40 @@
 'use client'
 
-import { useState, forwardRef, useImperativeHandle } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './styles/VideoDownloader.module.css'
 
-const VideoDownloader = forwardRef(function VideoDownloader(_props, ref) {
-  useImperativeHandle(ref, () => ({
-    pasteAndSearch: (text: string) => {
-      setUrl(text)
-      getVideoInfo(text)
-    }
-  }))
-  const [url, setUrl] = useState('')
+type Props = {
+  initialUrl: string
+}
+
+const VideoDownloader = ({ initialUrl }: Props) => {
+  const [url, setUrl] = useState(initialUrl)
   const [loading, setLoading] = useState(false)
   const [videoInfo, setVideoInfo] = useState<any>(null)
   const [error, setError] = useState<string | null>(null)
 
-  const getVideoInfo = async (customUrl?: string) => {
-    const finalUrl = customUrl ?? url
-    if (!finalUrl) return
+  // Sempre que initialUrl mudar → busca imediatamente
+  useEffect(() => {
+    if (initialUrl) {
+      setUrl(initialUrl)
+      getVideoInfo(initialUrl)
+    }
+  }, [initialUrl])
+
+  const getVideoInfo = async (finalUrl: string) => {
     setLoading(true)
     setError(null)
     try {
       const response = await fetch('/api/video/info', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ url: finalUrl, format_type: 'video_with_audio', quality: 'best' }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          url: finalUrl,
+          format_type: 'video_with_audio',
+          quality: 'best'
+        }),
       })
-      if (!response.ok) {
-        throw new Error(`Erro: ${response.status}`)
-      }
+      if (!response.ok) throw new Error(`Erro: ${response.status}`)
       const data = await response.json()
       setVideoInfo(data)
     } catch (error) {
@@ -49,41 +53,8 @@ const VideoDownloader = forwardRef(function VideoDownloader(_props, ref) {
 
   return (
     <div className={styles.container}>
-      {/* Input URL */}
-      <div className={styles.inputSection}>
-        <div className={styles.inputGroup}>
-          <input
-            type="text"
-            placeholder="Cole a URL do YouTube aqui..."
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            className={styles.urlInput}
-          />
-          <button
-            onClick={() => getVideoInfo()}
-            disabled={loading}
-            className={styles.analyzeButton}
-          >
-            {loading ? (
-              <>
-                <div className={styles.loadingSpinner}></div>
-                <span>Analisando...</span>
-              </>
-            ) : (
-              'Buscar Vídeo'
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Error Message */}
-      {error && (
-        <div className={styles.errorMessage}>
-          <span>⚠️ {error}</span>
-        </div>
-      )}
-
-      {/* Video Info */}
+      {loading && <p>⏳ Buscando informações do vídeo...</p>}
+      {error && <div className={styles.errorMessage}><span>⚠️ {error}</span></div>}
       {videoInfo && (
         <div className={styles.videoInfo}>
           <h3 className={styles.videoTitle}>{videoInfo.title}</h3>
@@ -98,13 +69,13 @@ const VideoDownloader = forwardRef(function VideoDownloader(_props, ref) {
                 alt="Thumbnail do vídeo"
                 className={styles.thumbnail}
                 onError={(e) => {
-                  // Fallback se a imagem não carregar
-                  (e.target as HTMLImageElement).src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNDcuNSA2Ny41TDE3Mi41IDgyLjVMMTQ3LjUgOTcuNVY2Ny41WiIgZmlsbD0iIzlDQTNBRiIvPgo8L3N2Zz4K'
+                  (e.target as HTMLImageElement).src =
+                    'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDMyMCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjRjNGNEY2Ii8+CjxwYXRoIGQ9Ik0xNDcuNSA2Ny41TDE3Mi41IDgyLjVMMTQ3LjUgOTcuNVY2Ny41WiIgZmlsbD0iIzlDQTNBRiIvPgo8L3N2Zz4K'
                 }}
               />
             </div>
           )}
-          
+
           <div className={styles.downloadSection}>
             <button className={styles.downloadButton}>
               📥 Download MP4
@@ -117,6 +88,6 @@ const VideoDownloader = forwardRef(function VideoDownloader(_props, ref) {
       )}
     </div>
   )
-})
+}
 
-export default VideoDownloader;
+export default VideoDownloader

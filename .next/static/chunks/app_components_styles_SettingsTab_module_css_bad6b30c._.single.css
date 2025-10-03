@@ -5,6 +5,11 @@
   display: flex;
 }
 
+.SettingsTab-module__nPAEPq__accountSection {
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
 .SettingsTab-module__nPAEPq__section {
   background-color: var(--white-color);
   border: 1px solid;
@@ -16,6 +21,7 @@
 
 .SettingsTab-module__nPAEPq__sectionTitle {
   color: var(--dark-text);
+  margin-top: 5px;
   margin-bottom: 1.5rem;
   font-size: 1.25rem;
   font-weight: 600;
@@ -35,24 +41,37 @@
 }
 
 .SettingsTab-module__nPAEPq__accountItem {
+  background-color: var(--primary-color);
+  border-radius: .5rem;
   justify-content: space-between;
   align-items: center;
+  height: 40px;
+  padding: 0 10px;
   display: flex;
 }
 
 .SettingsTab-module__nPAEPq__accountLabel {
   color: var(--text-color);
+  background-color: #5edb9b;
+  border-radius: .5rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
   font-weight: 500;
 }
 
 .SettingsTab-module__nPAEPq__accountValue {
   color: var(--dark-text);
+  background-color: #5edb9b;
+  border-radius: .5rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
 }
 
 .SettingsTab-module__nPAEPq__statusBadge {
-  color: #fff;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  border-radius: 9999px;
+  background-color: #5edb9b;
+  border-radius: .5rem;
   padding: .25rem .75rem;
   font-size: .875rem;
   font-weight: 500;
@@ -76,8 +95,10 @@
 }
 
 .SettingsTab-module__nPAEPq__benefitsGrid {
+  background-color: var(--primary-color);
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 2rem;
+  margin-bottom: 1rem;
   display: grid;
 }
 
@@ -88,8 +109,11 @@
 }
 
 .SettingsTab-module__nPAEPq__benefitItem {
+  background-color: #5edb9b;
+  border-radius: .5rem;
   align-items: flex-start;
   gap: .75rem;
+  margin: 5px;
   display: flex;
 }
 
@@ -108,6 +132,37 @@
   color: var(--text-color);
   font-size: .875rem;
   line-height: 1.25rem;
+}
+
+.SettingsTab-module__nPAEPq__button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #5edb9b;
+  border: none;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 18px;
+  font-weight: 600;
+  transition: background-color .2s, transform .2s;
+  display: flex;
+}
+
+.SettingsTab-module__nPAEPq__button:hover {
+  background-color: #4ac787;
+  transform: translateY(-2px);
+}
+
+.SettingsTab-module__nPAEPq__button:active {
+  background-color: #40b373;
+  transform: translateY(0);
+}
+
+.SettingsTab-module__nPAEPq__manageButton {
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 0;
+  display: flex;
 }
 
 /*# sourceMappingURL=app_components_styles_SettingsTab_module_css_bad6b30c._.single.css.map*/

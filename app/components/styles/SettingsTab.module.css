@@ -2,8 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-}
 
+}
+.accountSection {
+  padding-left: 1%;
+  padding-right: 1%;
+}
 .section {
   padding: 2rem;
   border-radius: 0.5rem;
@@ -14,9 +18,11 @@
 }
 
 .sectionTitle {
+
   font-size: 1.25rem;
   line-height: 1.75rem;
   font-weight: 600;
+  margin-top: 5px;
   margin-bottom: 1.5rem;
   color: var(--dark-text);
 }
@@ -37,25 +43,42 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--primary-color);
+  border-radius: 0.5rem;
+  height: 40px;
+  padding: 0 10px;
 }
+
 
 .accountLabel {
   font-weight: 500;
   color: var(--text-color);
+  background-color: rgb(94, 219, 155);
+    border-radius: 0.5rem;
+  padding: 0 10px;
+    justify-content: center;
+  align-items: center;
 }
 
 .accountValue {
   color: var(--dark-text);
+  background-color: rgb(94, 219, 155);
+    border-radius: 0.5rem;
+    padding: 0 10px;
+    justify-content: center;
+  align-items: center;
 }
 
 .statusBadge {
   padding: 0.25rem 0.75rem;
-  color: white;
+ /*color: white;*/
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 500;
   border-radius: 9999px;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  /* background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); */
+    background-color: rgb(94, 219, 155);
+    border-radius: 0.5rem;
 }
 
 .actionButton {
@@ -78,6 +101,8 @@
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 2rem;
+  background-color: var(--primary-color);
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -90,12 +115,16 @@
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
+  background-color: rgb(94, 219, 155);
+  border-radius: 0.5rem;
+  margin: 5px;
 }
 
 .benefitIcon {
   font-size: 1.125rem;
   line-height: 1.75rem;
   color: var(--primary-color);
+  
 }
 
 .benefitTitle {
@@ -107,4 +136,35 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: var(--text-color);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 18px;
+  background-color: rgb(94, 219, 155);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: rgb(74, 199, 135); /* tom mais escuro no hover */
+  transform: translateY(-2px);
+}
+
+.button:active {
+  background-color: rgb(64, 179, 115);
+  transform: translateY(0);
+}
+
+.manageButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0 0 0;
 }

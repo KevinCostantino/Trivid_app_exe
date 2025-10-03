@@ -1,41 +1,37 @@
 'use client'
 
-
-import { useRef } from 'react'
-import styles from './styles/HomeTab.module.css'
+import { useState } from 'react'
 import VideoDownloader from './VideoDownloader'
-
+import styles from './styles/HomeTab.module.css'
 
 export default function HomeTab() {
-  const videoDownloaderRef = useRef<any>(null)
+  const [videoUrl, setVideoUrl] = useState<string | null>(null)
 
   const handlePasteAndSearch = async () => {
     try {
       const text = await navigator.clipboard.readText()
-      if (!text) return
-      if (videoDownloaderRef.current) {
-        videoDownloaderRef.current.pasteAndSearch(text)
+      if (text) {
+        setVideoUrl(text) // já dispara a busca automática no VideoDownloader
       }
-    } catch {}
+    } catch (err) {
+      console.error('Erro ao ler área de transferência:', err)
+    }
   }
 
   return (
     <div className={styles.container}>
-      {/* Seção Colar e Buscar */}
       <div className={styles.pasteSection}>
         <div className={styles.pasteContent}>
-          <h2 className={styles.pasteTitle}>Cole ou busque seu vídeo</h2>
           <button onClick={handlePasteAndSearch} className={styles.pasteButton}>
             <span className={styles.pasteIcon}>📋</span>
-            Colar da Área de Transferência e Buscar
+            Clique para colar a URL
           </button>
         </div>
-      </div>
 
-      {/* Video Downloader */}
-      <VideoDownloader ref={videoDownloaderRef} />
-
-      {/* Features Section */}
+        {/* Só renderiza quando já tiver URL */}
+        {videoUrl && <VideoDownloader initialUrl={videoUrl} />}
+        <div style={{ padding: '20px' }} />
+              {/* Features Section */}
       <div className={styles.featuresSection}>
         <h2 className={styles.featuresTitle}>Plataformas Suportadas</h2>
         <div className={styles.featuresGrid}>
@@ -64,6 +60,8 @@ export default function HomeTab() {
           </div>
         </div>
       </div>
+    </div>
+    
     </div>
   )
 }

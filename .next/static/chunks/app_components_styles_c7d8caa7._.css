@@ -1,4 +1,13 @@
 /* [project]/app/components/styles/TitleBar.module.css [app-client] (css) */
+::-webkit-scrollbar {
+  background: none;
+  width: 0;
+}
+
+.TitleBar-module__zm9PcG__titleBarContent, .TitleBar-module__zm9PcG__logo {
+  -webkit-app-region: drag;
+}
+
 .TitleBar-module__zm9PcG__titleBar {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -10,7 +19,7 @@
   -webkit-app-region: drag;
   justify-content: space-between;
   align-items: center;
-  height: 8rem;
+  height: 4rem;
   padding: 0 2rem;
   display: flex;
 }
@@ -105,7 +114,40 @@
 }
 
 .TitleBar-module__zm9PcG__closeButton:hover {
-  background-color: #ef4444;
+  background: linear-gradient(90deg, #ff4d4f 0%, #ff7875 100%);
+  box-shadow: 0 2px 8px rgba(255, 0, 0, .15);
+}
+
+.TitleBar-module__zm9PcG__closeIcon {
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  position: relative;
+}
+
+.TitleBar-module__zm9PcG__closeIconLine {
+  background: #fff;
+  border-radius: 2px;
+  width: 100%;
+  height: .25rem;
+  transition: background .2s;
+  position: absolute;
+  top: 40%;
+  left: 0;
+}
+
+.TitleBar-module__zm9PcG__closeButton:hover .TitleBar-module__zm9PcG__closeIconLine {
+  background: #222;
+}
+
+.TitleBar-module__zm9PcG__closeIconLine1 {
+  transform: rotate(45deg);
+}
+
+.TitleBar-module__zm9PcG__closeIconLine2 {
+  transform: rotate(-45deg);
 }
 
 .TitleBar-module__zm9PcG__minimizeIcon {
@@ -126,31 +168,6 @@
 
 .TitleBar-module__zm9PcG__controlButton:hover .TitleBar-module__zm9PcG__maximizeIcon {
   border-color: #fff;
-}
-
-.TitleBar-module__zm9PcG__closeIcon {
-  width: 1.5rem;
-  height: 1.5rem;
-  position: relative;
-}
-
-.TitleBar-module__zm9PcG__closeIconLine {
-  background-color: #fff;
-  width: 1.5rem;
-  height: .25rem;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.TitleBar-module__zm9PcG__closeIconLine1 {
-  transform: rotate(45deg)translateY(.5rem);
-}
-
-.TitleBar-module__zm9PcG__closeIconLine2 {
-  transform: rotate(-45deg)translateY(.5rem);
 }
 
 .TitleBar-module__zm9PcG__closeButton:hover .TitleBar-module__zm9PcG__closeIconLine {
@@ -197,10 +214,6 @@
 .HomeTab-module__pAb1IG__container {
   flex-direction: column;
   gap: 2rem;
-  width: 100%;
-  max-width: 56rem;
-  margin: 0 auto;
-  padding: 0 1rem;
   display: flex;
 }
 
@@ -208,35 +221,24 @@
   background-color: var(--white-color);
   border: 1px solid;
   border-color: var(--border-color);
-  border-radius: 1rem;
-  padding: 3rem 2rem;
-  transition: all .3s ease-in-out;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -2px rgba(0, 0, 0, .1);
-}
-
-.HomeTab-module__pAb1IG__pasteSection:hover {
-  border-color: var(--primary-color);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .1);
+  border-radius: .5rem;
+  padding: 3rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
 }
 
 .HomeTab-module__pAb1IG__pasteContent {
   text-align: center;
   flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   display: flex;
 }
 
 .HomeTab-module__pAb1IG__pasteTitle {
   color: var(--dark-text);
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 2rem;
 }
 
 .HomeTab-module__pAb1IG__pasteButton {
@@ -244,106 +246,64 @@
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   cursor: pointer;
   border: none;
-  border-radius: 1rem;
-  justify-content: center;
+  border-radius: .5rem;
   align-items: center;
-  gap: 1rem;
-  padding: 1.25rem 3rem;
-  font-size: 1.125rem;
-  font-weight: 600;
-  transition: all .3s cubic-bezier(.4, 0, .2, 1);
+  gap: .75rem;
+  padding: 1rem 2rem;
+  font-weight: 500;
+  transition: all .2s ease-in-out;
   display: inline-flex;
-  position: relative;
-  overflow: hidden;
   transform: scale(1);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -4px rgba(0, 0, 0, .1);
 }
 
-.HomeTab-module__pAb1IG__pasteButton:before {
-  content: "";
-  background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
-  opacity: 0;
-  transition: opacity .3s;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.HomeTab-module__pAb1IG__pasteButton:hover:before {
-  opacity: 1;
-}
-
 .HomeTab-module__pAb1IG__pasteButton:hover {
-  transform: scale(1.05)translateY(-2px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .15), 0 8px 10px -6px rgba(0, 0, 0, .1);
-}
-
-.HomeTab-module__pAb1IG__pasteButton:active {
-  transform: scale(.98);
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .1), 0 8px 10px -6px rgba(0, 0, 0, .1);
 }
 
 .HomeTab-module__pAb1IG__pasteIcon {
-  z-index: 1;
-  width: 1.5rem;
-  height: 1.5rem;
-  position: relative;
-}
-
-.HomeTab-module__pAb1IG__pasteButton span {
-  z-index: 1;
-  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .HomeTab-module__pAb1IG__messageBox {
   border: 1px solid;
   border-color: var(--primary-color);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-  background: linear-gradient(135deg, rgba(0, 128, 128, .1), rgba(1, 113, 111, .1));
-  border-radius: .75rem;
-  width: 100%;
-  max-width: 500px;
-  margin-top: 1.5rem;
-  padding: 1rem 1.5rem;
+  background-color: rgba(0, 128, 128, .1);
+  border-radius: .5rem;
+  margin-top: 1rem;
+  padding: .75rem;
 }
 
 .HomeTab-module__pAb1IG__messageText {
   color: var(--primary-color);
-  font-size: .95rem;
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: .875rem;
+  line-height: 1.25rem;
 }
 
 .HomeTab-module__pAb1IG__featuresSection {
   background-color: var(--white-color);
   border: 1px solid;
   border-color: var(--border-color);
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -2px rgba(0, 0, 0, .1);
+  border-radius: .5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
 }
 
 .HomeTab-module__pAb1IG__featuresTitle {
   color: var(--dark-text);
-  text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.75rem;
 }
 
 .HomeTab-module__pAb1IG__featuresGrid {
   grid-template-columns: repeat(1, minmax(0, 1fr));
   gap: 1.5rem;
   display: grid;
-}
-
-@media (min-width: 640px) {
-  .HomeTab-module__pAb1IG__featuresGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (min-width: 768px) {
@@ -357,27 +317,13 @@
   background-color: var(--background-color);
   border: 1px solid;
   border-color: var(--border-color);
-  border-radius: 1rem;
-  padding: 2rem 1.5rem;
-  transition: all .3s cubic-bezier(.4, 0, .2, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.HomeTab-module__pAb1IG__featureCard:before {
-  content: "";
-  opacity: 0;
-  transition: opacity .3s;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  border-radius: .5rem;
+  padding: 1.5rem;
+  transition: transform .15s ease-in-out;
 }
 
 .HomeTab-module__pAb1IG__featureCard:hover {
-  transform: translateY(-8px)scale(1.02);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .1), 0 8px 10px -6px rgba(0, 0, 0, .1);
+  transform: scale(1.05);
 }
 
 .HomeTab-module__pAb1IG__youtubeCard {
@@ -385,25 +331,9 @@
   border-color: #fca5a5;
 }
 
-.HomeTab-module__pAb1IG__youtubeCard:before {
-  background: linear-gradient(135deg, #fee2e2, #fecaca);
-}
-
-.HomeTab-module__pAb1IG__youtubeCard:hover:before {
-  opacity: 1;
-}
-
 .HomeTab-module__pAb1IG__twitchCard {
   background: linear-gradient(135deg, #faf5ff, #e9d5ff);
   border-color: #c4b5fd;
-}
-
-.HomeTab-module__pAb1IG__twitchCard:before {
-  background: linear-gradient(135deg, #e9d5ff, #ddd6fe);
-}
-
-.HomeTab-module__pAb1IG__twitchCard:hover:before {
-  opacity: 1;
 }
 
 .HomeTab-module__pAb1IG__spotifyCard {
@@ -411,112 +341,22 @@
   border-color: #86efac;
 }
 
-.HomeTab-module__pAb1IG__spotifyCard:before {
-  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
-}
-
-.HomeTab-module__pAb1IG__spotifyCard:hover:before {
-  opacity: 1;
-}
-
 .HomeTab-module__pAb1IG__featureIcon {
-  z-index: 1;
-  margin-bottom: 1rem;
-  font-size: 3rem;
-  line-height: 3.5rem;
-  display: block;
-  position: relative;
+  margin-bottom: .75rem;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .HomeTab-module__pAb1IG__featureTitle {
   color: var(--dark-text);
-  z-index: 1;
-  margin-bottom: .75rem;
-  font-size: 1.125rem;
-  font-weight: 700;
-  position: relative;
+  margin-bottom: .5rem;
+  font-weight: 600;
 }
 
 .HomeTab-module__pAb1IG__featureDescription {
   color: var(--text-color);
-  z-index: 1;
-  font-size: .95rem;
-  font-weight: 500;
-  line-height: 1.4;
-  position: relative;
-}
-
-@media (max-width: 640px) {
-  .HomeTab-module__pAb1IG__container {
-    padding: 0 .5rem;
-  }
-
-  .HomeTab-module__pAb1IG__pasteSection {
-    padding: 2rem 1rem;
-  }
-
-  .HomeTab-module__pAb1IG__pasteTitle {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .HomeTab-module__pAb1IG__pasteButton {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-  }
-
-  .HomeTab-module__pAb1IG__featuresSection {
-    padding: 1.5rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .HomeTab-module__pAb1IG__container {
-    padding: 0 2rem;
-  }
-}
-
-.HomeTab-module__pAb1IG__dark .HomeTab-module__pAb1IG__youtubeCard {
-  background: linear-gradient(135deg, rgba(127, 29, 29, .2), rgba(153, 27, 27, .2));
-  border-color: rgba(127, 29, 29, .5);
-}
-
-.HomeTab-module__pAb1IG__dark .HomeTab-module__pAb1IG__twitchCard {
-  background: linear-gradient(135deg, rgba(88, 28, 135, .2), rgba(107, 33, 168, .2));
-  border-color: rgba(88, 28, 135, .5);
-}
-
-.HomeTab-module__pAb1IG__dark .HomeTab-module__pAb1IG__spotifyCard {
-  background: linear-gradient(135deg, rgba(20, 83, 45, .2), rgba(22, 101, 52, .2));
-  border-color: rgba(20, 83, 45, .5);
-}
-
-@keyframes HomeTab-module__pAb1IG__fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.HomeTab-module__pAb1IG__container > * {
-  animation: .6s ease-out forwards HomeTab-module__pAb1IG__fadeInUp;
-}
-
-.HomeTab-module__pAb1IG__container > :first-child {
-  animation-delay: .1s;
-}
-
-.HomeTab-module__pAb1IG__container > :nth-child(2) {
-  animation-delay: .2s;
-}
-
-.HomeTab-module__pAb1IG__container > :nth-child(3) {
-  animation-delay: .3s;
+  font-size: .875rem;
+  line-height: 1.25rem;
 }
 
 /* [project]/app/components/styles/SettingsTab.module.css [app-client] (css) */
