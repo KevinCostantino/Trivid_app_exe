@@ -2,9 +2,14 @@
 import { useState } from 'react'
 import styles from './styles/SettingsTab.module.css'
 import Conta from './Conta'
+import CancelSubscription from './CancelSubscription'
 
 export default function SettingsTab() {
   const [openConta, setOpenConta] = useState(false)
+  const [openCancelSubscription, setOpenCancelSubscription] = useState(false)
+
+
+
 
   return (
     <div className={styles.container}>
@@ -35,10 +40,10 @@ export default function SettingsTab() {
         </div>
 
         <div className={styles.manageButton}>
-          <button className={styles.button} onClick={() => setOpenConta(true)}>
-            Manage Subscription
-          </button>
+          <button className={styles.button} onClick={() => setOpenConta(true)}> Entrar/Criar Conta</button>
+          <button className={styles.cancelSubscriptionButton} onClick={() => setOpenCancelSubscription(true)}>Cancelar assinatura</button>
         </div>
+
       </div>
 
       {/* Benefícios do Plano */}
@@ -86,6 +91,9 @@ export default function SettingsTab() {
 
       {/* 🔹 Modal sobrepondo TUDO */}
       <Conta open={openConta} onClose={() => setOpenConta(false)} />
+      <CancelSubscription open={openCancelSubscription} onClose={() => setOpenCancelSubscription(false)} onConfirmCancel={function (): void {
+        throw new Error('Function not implemented.')
+      } } />
     </div>
   )
 }

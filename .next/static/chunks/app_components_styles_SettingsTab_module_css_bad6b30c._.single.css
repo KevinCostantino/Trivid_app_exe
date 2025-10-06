@@ -166,4 +166,19 @@
   display: flex;
 }
 
+.SettingsTab-module__nPAEPq__cancelSubscriptionButton {
+  color: #fff;
+  cursor: pointer;
+  background-color: #cf1d1d;
+  border: none;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 500px;
+  padding: 10px 18px;
+  font-weight: 600;
+  transition: background-color .2s, transform .2s;
+  display: flex;
+}
+
 /*# sourceMappingURL=app_components_styles_SettingsTab_module_css_bad6b30c._.single.css.map*/
