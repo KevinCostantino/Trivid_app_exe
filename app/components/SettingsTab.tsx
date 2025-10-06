@@ -1,40 +1,41 @@
+'use client'
+import { useState } from 'react'
 import styles from './styles/SettingsTab.module.css'
+import Conta from './Conta'
 
 export default function SettingsTab() {
+  const [openConta, setOpenConta] = useState(false)
+
   return (
     <div className={styles.container}>
       {/* Informações da Conta */}
       <div className={styles.accountSection}>
-        <h2 className={styles.sectionTitle}>
-          Informações da Conta
-        </h2>
-        
+        <h2 className={styles.sectionTitle}>Informações da Conta</h2>
+
         <div className={styles.accountGrid}>
           <div className={styles.accountItem}>
             <span className={styles.accountLabel}>Username</span>
             <span className={styles.accountValue}>johndoe</span>
           </div>
-          
+
           <div className={styles.accountItem}>
             <span className={styles.accountLabel}>Email</span>
             <span className={styles.accountValue}>john.doe@example.com</span>
           </div>
-          
+
           <div className={styles.accountItem}>
             <span className={styles.accountLabel}>Account Status</span>
-            <span className={styles.statusBadge}>
-              Premium
-            </span>
+            <span className={styles.statusBadge}>Premium</span>
           </div>
-          
+
           <div className={styles.accountItem}>
             <span className={styles.accountLabel}>Renewal Date</span>
             <span className={styles.accountValue}>December 15, 2023</span>
           </div>
         </div>
-        
+
         <div className={styles.manageButton}>
-          <button className={styles.button}>
+          <button className={styles.button} onClick={() => setOpenConta(true)}>
             Manage Subscription
           </button>
         </div>
@@ -42,10 +43,8 @@ export default function SettingsTab() {
 
       {/* Benefícios do Plano */}
       <div className={styles.benefitsSection}>
-        <h2 className={styles.sectionTitle}>
-          Benefícios do Plano Premium
-        </h2>
-        
+        <h2 className={styles.sectionTitle}>Benefícios do Plano Premium</h2>
+
         <div className={styles.benefitsGrid}>
           <div className={styles.benefitsList}>
             <div className={styles.benefitItem}>
@@ -55,7 +54,7 @@ export default function SettingsTab() {
                 <p className={styles.benefitDescription}>No daily limits</p>
               </div>
             </div>
-            
+
             <div className={styles.benefitItem}>
               <div className={styles.benefitIcon}>✅</div>
               <div>
@@ -64,7 +63,7 @@ export default function SettingsTab() {
               </div>
             </div>
           </div>
-          
+
           <div className={styles.benefitsList}>
             <div className={styles.benefitItem}>
               <div className={styles.benefitIcon}>✅</div>
@@ -73,7 +72,7 @@ export default function SettingsTab() {
                 <p className={styles.benefitDescription}>Up to 5 at once</p>
               </div>
             </div>
-            
+
             <div className={styles.benefitItem}>
               <div className={styles.benefitIcon}>✅</div>
               <div>
@@ -84,6 +83,9 @@ export default function SettingsTab() {
           </div>
         </div>
       </div>
+
+      {/* 🔹 Modal sobrepondo TUDO */}
+      <Conta open={openConta} onClose={() => setOpenConta(false)} />
     </div>
   )
 }
