@@ -1090,6 +1090,7 @@ __turbopack_context__.v({
   "historyItem": "HistoryPanel-module__dLq40G__historyItem",
   "iconEmoji": "HistoryPanel-module__dLq40G__iconEmoji",
   "platformIcon": "HistoryPanel-module__dLq40G__platformIcon",
+  "scrollContainer": "HistoryPanel-module__dLq40G__scrollContainer",
   "slideInUp": "HistoryPanel-module__dLq40G__slideInUp",
   "spotifyPlatform": "HistoryPanel-module__dLq40G__spotifyPlatform",
   "title": "HistoryPanel-module__dLq40G__title",
@@ -1115,6 +1116,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$
 ;
 function HistoryPanel({ open, onToggle }) {
     const [isTwoColumns, setIsTwoColumns] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [shiftUp, setShiftUp] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const handleToggle = ()=>{
+        onToggle(); // mantém a função externa
+        setShiftUp((prev)=>!prev); // alterna a margem
+    };
     const mockHistoryData = [
         {
             id: 1,
@@ -1155,6 +1161,46 @@ function HistoryPanel({ open, onToggle }) {
             size: "82MB",
             date: "2024-01-12",
             platform: "spotify"
+        },
+        {
+            id: 5,
+            title: "Vídeo 5",
+            type: "MP4",
+            quality: "1080p",
+            duration: "55:30",
+            size: "445MB",
+            date: "2025-01-15",
+            platform: "youtube"
+        },
+        {
+            id: 6,
+            title: "Vídeo 6",
+            type: "MP3",
+            quality: "220kbps",
+            duration: "03:45",
+            size: "19MB",
+            date: "2024-02-14",
+            platform: "youtube"
+        },
+        {
+            id: 7,
+            title: "Vídeo 7",
+            type: "MP4",
+            quality: "720p",
+            duration: "5:15:30",
+            size: "1.0GB",
+            date: "2022-01-13",
+            platform: "twitch"
+        },
+        {
+            id: 8,
+            title: "Vídeo 8",
+            type: "MP3",
+            quality: "352kbps",
+            duration: "5:30:00",
+            size: "722MB",
+            date: "2020-01-12",
+            platform: "spotify"
         }
     ];
     const getPlatformColor = (platform)=>{
@@ -1183,6 +1229,9 @@ function HistoryPanel({ open, onToggle }) {
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].container,
+        style: {
+            marginTop: shiftUp ? '-620px' : '0'
+        },
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].header,
@@ -1192,7 +1241,7 @@ function HistoryPanel({ open, onToggle }) {
                         children: "History"
                     }, void 0, false, {
                         fileName: "[project]/app/components/HistoryPanel.tsx",
-                        lineNumber: 79,
+                        lineNumber: 125,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1214,12 +1263,12 @@ function HistoryPanel({ open, onToggle }) {
                                         d: "M4 6h16M4 12h16M4 18h16"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/HistoryPanel.tsx",
-                                        lineNumber: 92,
+                                        lineNumber: 138,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/HistoryPanel.tsx",
-                                    lineNumber: 91,
+                                    lineNumber: 137,
                                     columnNumber: 15
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].controlIcon,
@@ -1233,21 +1282,21 @@ function HistoryPanel({ open, onToggle }) {
                                         d: "M4 6h7M4 12h7M4 18h7M15 6h5M15 12h5M15 18h5"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/HistoryPanel.tsx",
-                                        lineNumber: 96,
+                                        lineNumber: 142,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/HistoryPanel.tsx",
-                                    lineNumber: 95,
+                                    lineNumber: 141,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/HistoryPanel.tsx",
-                                lineNumber: 85,
+                                lineNumber: 131,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: onToggle,
+                                onClick: handleToggle,
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].controlButton,
                                 title: open ? "Recolher" : "Expandir",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -1262,193 +1311,207 @@ function HistoryPanel({ open, onToggle }) {
                                         d: "M19 9l-7 7-7-7"
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/HistoryPanel.tsx",
-                                        lineNumber: 113,
+                                        lineNumber: 159,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/HistoryPanel.tsx",
-                                    lineNumber: 107,
+                                    lineNumber: 153,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/HistoryPanel.tsx",
-                                lineNumber: 102,
+                                lineNumber: 148,
                                 columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "container"
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/HistoryPanel.tsx",
+                                lineNumber: 162,
+                                columnNumber: 17
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/HistoryPanel.tsx",
-                        lineNumber: 83,
+                        lineNumber: 129,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/HistoryPanel.tsx",
-                lineNumber: 78,
+                lineNumber: 124,
                 columnNumber: 7
             }, this),
             open && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].content,
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].grid} ${isTwoColumns ? __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].gridTwoColumns : __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].gridOneColumn}`,
-                        children: mockHistoryData.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].historyItem,
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].platformIcon} ${getPlatformColor(item.platform)}`,
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].iconEmoji,
-                                            children: getPlatformIcon(item.platform)
+                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].scrollContainer,
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].grid} ${isTwoColumns ? __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].gridTwoColumns : __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].gridOneColumn}`,
+                            children: mockHistoryData.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].historyItem,
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].platformIcon} ${getPlatformColor(item.platform)}`,
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].iconEmoji,
+                                                children: getPlatformIcon(item.platform)
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                lineNumber: 180,
+                                                columnNumber: 19
+                                            }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/HistoryPanel.tsx",
-                                            lineNumber: 130,
-                                            columnNumber: 19
+                                            lineNumber: 179,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].fileInfo,
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].fileTitle,
+                                                    children: item.title
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                    lineNumber: 185,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].fileDetails,
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: [
+                                                                item.type,
+                                                                " - ",
+                                                                item.quality
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                            lineNumber: 189,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: [
+                                                                "Time: ",
+                                                                item.duration
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                            lineNumber: 190,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                            children: [
+                                                                "Size: ",
+                                                                item.size
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                            lineNumber: 191,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                    lineNumber: 188,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].fileDate,
+                                                    children: item.date
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                    lineNumber: 193,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/app/components/HistoryPanel.tsx",
+                                            lineNumber: 184,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].actions,
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].actionButton} ${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].downloadButton} group`,
+                                                    title: "Baixar novamente",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].actionIcon} ${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].downloadIcon}`,
+                                                        fill: "none",
+                                                        stroke: "currentColor",
+                                                        viewBox: "0 0 24 24",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            strokeLinecap: "round",
+                                                            strokeLinejoin: "round",
+                                                            strokeWidth: 2,
+                                                            d: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                            lineNumber: 205,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                        lineNumber: 204,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                    lineNumber: 200,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                    className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].actionButton} ${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].deleteButton} group`,
+                                                    title: "Deletar",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                        className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].actionIcon} ${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].deleteIcon}`,
+                                                        fill: "none",
+                                                        stroke: "currentColor",
+                                                        viewBox: "0 0 24 24",
+                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                            strokeLinecap: "round",
+                                                            strokeLinejoin: "round",
+                                                            strokeWidth: 2,
+                                                            d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                            lineNumber: 214,
+                                                            columnNumber: 23
+                                                        }, this)
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                        lineNumber: 213,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/HistoryPanel.tsx",
+                                                    lineNumber: 209,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/app/components/HistoryPanel.tsx",
+                                            lineNumber: 199,
+                                            columnNumber: 17
                                         }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/HistoryPanel.tsx",
-                                        lineNumber: 129,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].fileInfo,
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].fileTitle,
-                                                children: item.title
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/components/HistoryPanel.tsx",
-                                                lineNumber: 135,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].fileDetails,
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        children: [
-                                                            item.type,
-                                                            " - ",
-                                                            item.quality
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/components/HistoryPanel.tsx",
-                                                        lineNumber: 139,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        children: [
-                                                            "Time: ",
-                                                            item.duration
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/components/HistoryPanel.tsx",
-                                                        lineNumber: 140,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        children: [
-                                                            "Size: ",
-                                                            item.size
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/components/HistoryPanel.tsx",
-                                                        lineNumber: 141,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/components/HistoryPanel.tsx",
-                                                lineNumber: 138,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].fileDate,
-                                                children: item.date
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/components/HistoryPanel.tsx",
-                                                lineNumber: 143,
-                                                columnNumber: 19
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/components/HistoryPanel.tsx",
-                                        lineNumber: 134,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].actions,
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].actionButton} ${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].downloadButton} group`,
-                                                title: "Baixar novamente",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                    className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].actionIcon} ${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].downloadIcon}`,
-                                                    fill: "none",
-                                                    stroke: "currentColor",
-                                                    viewBox: "0 0 24 24",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                        strokeLinecap: "round",
-                                                        strokeLinejoin: "round",
-                                                        strokeWidth: 2,
-                                                        d: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/components/HistoryPanel.tsx",
-                                                        lineNumber: 155,
-                                                        columnNumber: 23
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/components/HistoryPanel.tsx",
-                                                    lineNumber: 154,
-                                                    columnNumber: 21
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/components/HistoryPanel.tsx",
-                                                lineNumber: 150,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].actionButton} ${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].deleteButton} group`,
-                                                title: "Deletar",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                    className: `${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].actionIcon} ${__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$components$2f$styles$2f$HistoryPanel$2e$module$2e$css__$5b$app$2d$ssr$5d$__$28$css__module$29$__["default"].deleteIcon}`,
-                                                    fill: "none",
-                                                    stroke: "currentColor",
-                                                    viewBox: "0 0 24 24",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                        strokeLinecap: "round",
-                                                        strokeLinejoin: "round",
-                                                        strokeWidth: 2,
-                                                        d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/components/HistoryPanel.tsx",
-                                                        lineNumber: 164,
-                                                        columnNumber: 23
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/components/HistoryPanel.tsx",
-                                                    lineNumber: 163,
-                                                    columnNumber: 21
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/components/HistoryPanel.tsx",
-                                                lineNumber: 159,
-                                                columnNumber: 19
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/components/HistoryPanel.tsx",
-                                        lineNumber: 149,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, item.id, true, {
-                                fileName: "[project]/app/components/HistoryPanel.tsx",
-                                lineNumber: 124,
-                                columnNumber: 15
-                            }, this))
+                                    ]
+                                }, item.id, true, {
+                                    fileName: "[project]/app/components/HistoryPanel.tsx",
+                                    lineNumber: 174,
+                                    columnNumber: 15
+                                }, this))
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/HistoryPanel.tsx",
+                            lineNumber: 172,
+                            columnNumber: 11
+                        }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/components/HistoryPanel.tsx",
-                        lineNumber: 122,
+                        lineNumber: 171,
                         columnNumber: 11
                     }, this),
                     mockHistoryData.length === 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1457,24 +1520,24 @@ function HistoryPanel({ open, onToggle }) {
                             children: "Nenhum download no histórico"
                         }, void 0, false, {
                             fileName: "[project]/app/components/HistoryPanel.tsx",
-                            lineNumber: 174,
+                            lineNumber: 224,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/components/HistoryPanel.tsx",
-                        lineNumber: 173,
+                        lineNumber: 223,
                         columnNumber: 13
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/HistoryPanel.tsx",
-                lineNumber: 121,
+                lineNumber: 170,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/HistoryPanel.tsx",
-        lineNumber: 76,
+        lineNumber: 121,
         columnNumber: 5
     }, this);
 }

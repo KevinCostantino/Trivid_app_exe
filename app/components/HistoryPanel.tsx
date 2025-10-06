@@ -10,7 +10,12 @@ type HistoryPanelProps = {
 
 export default function HistoryPanel({ open, onToggle }: HistoryPanelProps) {
   const [isTwoColumns, setIsTwoColumns] = useState(true)
+  const [shiftUp, setShiftUp] = useState(false);
 
+  const handleToggle = () => {
+    onToggle(); // mantém a função externa
+    setShiftUp(prev => !prev); // alterna a margem
+  };
   const mockHistoryData = [
     {
       id: 1,
@@ -51,6 +56,46 @@ export default function HistoryPanel({ open, onToggle }: HistoryPanelProps) {
       size: "82MB",
       date: "2024-01-12",
       platform: "spotify"
+    },
+        {
+      id: 5,
+      title: "Vídeo 5",
+      type: "MP4",
+      quality: "1080p",
+      duration: "55:30",
+      size: "445MB",
+      date: "2025-01-15",
+      platform: "youtube"
+    },
+    {
+      id: 6,
+      title: "Vídeo 6",
+      type: "MP3",
+      quality: "220kbps",
+      duration: "03:45",
+      size: "19MB",
+      date: "2024-02-14",
+      platform: "youtube"
+    },
+    {
+      id: 7,
+      title: "Vídeo 7",
+      type: "MP4",
+      quality: "720p",
+      duration: "5:15:30",
+      size: "1.0GB",
+      date: "2022-01-13",
+      platform: "twitch"
+    },
+    {
+      id: 8,
+      title: "Vídeo 8",
+      type: "MP3",
+      quality: "352kbps",
+      duration: "5:30:00",
+      size: "722MB",
+      date: "2020-01-12",
+      platform: "spotify"
     }
   ]
 
@@ -73,7 +118,8 @@ export default function HistoryPanel({ open, onToggle }: HistoryPanelProps) {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container}
+      style={{ marginTop: shiftUp ? '-620px' : '0' }}>
       {/* Header */}
       <div className={styles.header}>
         <h3 className={styles.title}>
@@ -100,7 +146,7 @@ export default function HistoryPanel({ open, onToggle }: HistoryPanelProps) {
           
           {/* Toggle Panel Button */}
           <button
-            onClick={onToggle}
+            onClick={handleToggle}
             className={styles.controlButton}
             title={open ? "Recolher" : "Expandir"}
           >
@@ -113,12 +159,16 @@ export default function HistoryPanel({ open, onToggle }: HistoryPanelProps) {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </button>
+                <div
+        className="container"
+      ></div>
         </div>
       </div>
       
       {/* Content */}
       {open && (
         <div className={styles.content}>
+          <div className={styles.scrollContainer}>
           <div className={`${styles.grid} ${isTwoColumns ? styles.gridTwoColumns : styles.gridOneColumn}`}>
             {mockHistoryData.map((item) => (
               <div
@@ -168,7 +218,7 @@ export default function HistoryPanel({ open, onToggle }: HistoryPanelProps) {
               </div>
             ))}
           </div>
-          
+          </div>
           {mockHistoryData.length === 0 && (
             <div className={styles.emptyState}>
               <p>Nenhum download no histórico</p>
