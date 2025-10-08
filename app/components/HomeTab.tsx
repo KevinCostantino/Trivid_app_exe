@@ -1,21 +1,28 @@
 'use client'
 
 import { useState } from 'react'
-import VideoDownloader from './VideoDownloader'
+import DownloadScreen from './DownloadScreen'
 import styles from './styles/HomeTab.module.css'
 
 export default function HomeTab() {
-  const [videoUrl, setVideoUrl] = useState<string | null>(null)
+  const [showDownloadScreen, setShowDownloadScreen] = useState(false)
+  const [videoUrl, setVideoUrl] = useState<string>('')
 
   const handlePasteAndSearch = async () => {
     try {
       const text = await navigator.clipboard.readText()
       if (text) {
-        setVideoUrl(text) // já dispara a busca automática no VideoDownloader
+        setVideoUrl(text)
+        setShowDownloadScreen(true)
       }
     } catch (err) {
       console.error('Erro ao ler área de transferência:', err)
     }
+  }
+
+  const handleCloseDownloadScreen = () => {
+    setShowDownloadScreen(false)
+    setVideoUrl('')
   }
 
   return (
@@ -28,40 +35,45 @@ export default function HomeTab() {
           </button>
         </div>
 
-        {/* Só renderiza quando já tiver URL */}
-        {videoUrl && <VideoDownloader initialUrl={videoUrl} />}
         <div style={{ padding: '20px' }} />
-              {/* Features Section */}
-      <div className={styles.featuresSection}>
-        <h2 className={styles.featuresTitle}>Plataformas Suportadas</h2>
-        <div className={styles.featuresGrid}>
-          <div className={`${styles.featureCard} ${styles.youtubeCard}`}>
-            <div className={styles.featureIcon}>📺</div>
-            <h3 className={styles.featureTitle}>YouTube</h3>
-            <p className={styles.featureDescription}>
-              Baixe vídeos e áudios em alta qualidade
-            </p>
-          </div>
-          
-          <div className={`${styles.featureCard} ${styles.twitchCard}`}>
-            <div className={styles.featureIcon}>🎮</div>
-            <h3 className={styles.featureTitle}>Twitch</h3>
-            <p className={styles.featureDescription}>
-              Downloads de streams e clipes
-            </p>
-          </div>
-          
-          <div className={`${styles.featureCard} ${styles.spotifyCard}`}>
-            <div className={styles.featureIcon}>🎵</div>
-            <h3 className={styles.featureTitle}>Spotify</h3>
-            <p className={styles.featureDescription}>
-              Extraia áudios de playlists
-            </p>
+        
+        {/* Features Section */}
+        <div className={styles.featuresSection}>
+          <h2 className={styles.featuresTitle}>Plataformas Suportadas</h2>
+          <div className={styles.featuresGrid}>
+            <div className={`${styles.featureCard} ${styles.youtubeCard}`}>
+              <div className={styles.featureIcon}>📺</div>
+              <h3 className={styles.featureTitle}>YouTube</h3>
+              <p className={styles.featureDescription}>
+                Baixe vídeos e áudios em alta qualidade
+              </p>
+            </div>
+            
+            <div className={`${styles.featureCard} ${styles.twitchCard}`}>
+              <div className={styles.featureIcon}>🎮</div>
+              <h3 className={styles.featureTitle}>Twitch</h3>
+              <p className={styles.featureDescription}>
+                Downloads de streams e clipes
+              </p>
+            </div>
+            
+            <div className={`${styles.featureCard} ${styles.spotifyCard}`}>
+              <div className={styles.featureIcon}>🎵</div>
+              <h3 className={styles.featureTitle}>Spotify</h3>
+              <p className={styles.featureDescription}>
+                Extraia áudios de playlists
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    
+
+      {/* Modal de Download */}
+      <DownloadScreen 
+        open={showDownloadScreen}
+        onClose={handleCloseDownloadScreen}
+        initialUrl={videoUrl}
+      />
     </div>
   )
 }
