@@ -1,0 +1,34 @@
+{
+  "user": {
+    "username": "joaosilva",
+    "email": "joao@email.com",
+    "account_status": "premium",
+    "renewal_date": "2024-12-31T23:59:59Z",
+    "password": "hashed_password_here"
+  },
+  "download_info": {
+    "download_date": "2024-01-15T14:30:00Z",
+    "platform": "youtube",
+    "video_id": "dQw4w9WgXcQ"
+  },
+  "video_metadata": {
+    "title": "Título do Vídeo do YouTube",
+    "channel": "Nome do Canal",
+    "duration": "15:30",
+    "duration_seconds": 930,
+    "thumbnail": "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+  },
+  "download_options": {
+    "format": "mp4",
+    "resolution": "1080p",
+    "quality": "full_hd",
+    "file_size": "250MB",
+    "file_size_bytes": 262144000
+  },
+  "download_status": {
+    "status": "completed",
+    "progress": 100,
+    "download_url": "https://cdn.example.com/videos/dQw4w9WgXcQ_1080p.mp4",
+    "local_path": "C:/Users/Usuario/Downloads/video_1080p.mp4"
+  }
+}
