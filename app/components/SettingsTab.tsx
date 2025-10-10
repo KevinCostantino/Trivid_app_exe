@@ -3,6 +3,7 @@ import { useState } from 'react'
 import styles from './styles/SettingsTab.module.css'
 import Conta from './Conta'
 import CancelSubscription from './CancelSubscription'
+import mockData from '../data/mockData.json'
 
 export default function SettingsTab() {
   const [openConta, setOpenConta] = useState(false)
@@ -20,22 +21,28 @@ export default function SettingsTab() {
         <div className={styles.accountGrid}>
           <div className={styles.accountItem}>
             <span className={styles.accountLabel}>Username</span>
-            <span className={styles.accountValue}>johndoe</span>
+            <span className={styles.accountValue}>{mockData.user.username}</span>
           </div>
 
           <div className={styles.accountItem}>
             <span className={styles.accountLabel}>Email</span>
-            <span className={styles.accountValue}>john.doe@example.com</span>
+            <span className={styles.accountValue}>{mockData.user.email}</span>
           </div>
 
           <div className={styles.accountItem}>
             <span className={styles.accountLabel}>Account Status</span>
-            <span className={styles.statusBadge}>Premium</span>
+            <span className={styles.statusBadge}>{mockData.user.account_status}</span>
           </div>
 
           <div className={styles.accountItem}>
             <span className={styles.accountLabel}>Renewal Date</span>
-            <span className={styles.accountValue}>December 15, 2023</span>
+            <span className={styles.accountValue}>
+              {new Date(mockData.user.renewal_date).toLocaleDateString('pt-BR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </span>
           </div>
         </div>
 

@@ -2,6 +2,21 @@
 
 import { useState, useEffect } from 'react'
 import styles from './styles/VideoDownloader.module.css'
+import mockData from '../data/mockData.json'
+
+
+interface VideoInfo {
+  title: string
+  thumbnail: string
+  duration: string
+  channel: string
+  options?: {
+    format: string
+    resolution: string
+    quality: string
+    fileSize: string
+  }
+}
 
 type Props = {
   initialUrl: string
@@ -10,7 +25,7 @@ type Props = {
 const VideoDownloader = ({ initialUrl }: Props) => {
   const [url, setUrl] = useState(initialUrl)
   const [loading, setLoading] = useState(false)
-  const [videoInfo, setVideoInfo] = useState<any>(null)
+  const [videoInfo, setVideoInfo] = useState<VideoInfo | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   // Sempre que initialUrl mudar → busca imediatamente
@@ -25,27 +40,46 @@ const VideoDownloader = ({ initialUrl }: Props) => {
     setLoading(true)
     setError(null)
     try {
+
+      // Mapeia os dados do mock para o formato do componente
+      setVideoInfo({
+        title: mockData.video_metadata.title,
+        thumbnail: mockData.video_metadata.thumbnail,
+        duration: mockData.video_metadata.duration,
+        channel: mockData.video_metadata.channel,
+        options: {
+          format: mockData.download_options.format,
+          resolution: mockData.download_options.resolution,
+          quality: mockData.download_options.quality,
+          fileSize: mockData.download_options.file_size
+        }
+      })
+      
+      // Quando o backend estiver pronto, descomente o código abaixo:
+      /*
       const response = await fetch('/api/video/info', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          url: finalUrl,
-          format_type: 'video_with_audio',
-          quality: 'best'
-        }),
+        body: JSON.stringify({ url: finalUrl }),
       })
       if (!response.ok) throw new Error(`Erro: ${response.status}`)
       const data = await response.json()
-      setVideoInfo(data)
+      setVideoInfo({
+        title: data.video_metadata.title,
+        thumbnail: data.video_metadata.thumbnail,
+        duration: data.video_metadata.duration,
+        channel: data.video_metadata.channel,
+        options: {
+          format: data.download_options.format,
+          resolution: data.download_options.resolution,
+          quality: data.download_options.quality,
+          fileSize: data.download_options.file_size
+        }
+      })
+      */
     } catch (error) {
       console.error('Erro ao buscar vídeo:', error)
-      setError('Erro ao buscar informações do vídeo. Verifique se o backend está rodando.')
-      setVideoInfo({
-        title: 'Vídeo de Exemplo (Simulado)',
-        thumbnail: '',
-        duration: '5:30',
-        channel: 'Canal Exemplo'
-      })
+      setError('Erro ao buscar informações do vídeo.')
     } finally {
       setLoading(false)
     }
@@ -77,8 +111,18 @@ const VideoDownloader = ({ initialUrl }: Props) => {
           )}
 
           <div className={styles.downloadSection}>
+            {videoInfo.options && (
+              <div className={styles.downloadInfo}>
+                <p className={styles.qualityInfo}>
+                  Qualidade: {videoInfo.options.resolution} ({videoInfo.options.quality})
+                </p>
+                <p className={styles.sizeInfo}>
+                  Tamanho estimado: {videoInfo.options.fileSize}
+                </p>
+              </div>
+            )}
             <button className={styles.downloadButton}>
-              📥 Download MP4
+              📥 Download {videoInfo.options?.format.toUpperCase() || 'MP4'}
             </button>
             <button className={styles.downloadButton}>
               🎵 Download MP3
