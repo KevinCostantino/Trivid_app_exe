@@ -1,19 +1,21 @@
-# YouTube Downloader - SaaS
+# TriviD - Video Downloader
 
-Sistema completo para download de vídeos do YouTube com interface web moderna.
+Sistema completo para download de vídeos com interface web moderna e recursos avançados.
 
 ## 🏗️ Arquitetura
 
 - **Backend**: FastAPI + Python
-- **Frontend**: Next.js + React + TypeScript + Tailwind CSS
+- **Frontend**: Next.js 14 + React + TypeScript + Tailwind CSS
 - **Download**: pytubefix + ffmpeg
+- **Autenticação**: Sistema de contas e assinaturas
+- **Storage**: Sistema de armazenamento local/nuvem
+- **Interface**: Electron para versão desktop
 
 ## 🚀 Como Executar
 
 ### Execução Rápida (Windows)
 ```bash
 start.bat
-npx electron .
 ```
 
 ### Execução Rápida (Linux/Mac)
@@ -39,7 +41,11 @@ cd frontend
 npm install
 npm run dev
 ```
-
+#### Electron
+```bash
+cd frontend
+npx electron .
+```
 ## 📍 URLs
 
 - 🌐 **Frontend**: http://localhost:3000
@@ -93,72 +99,173 @@ brew install ffmpeg
 ## 🎯 Funcionalidades
 
 ### Implementadas
-- ✅ Interface web responsiva
+- ✅ Interface web responsiva e moderna
 - ✅ Busca de informações do vídeo
-- ✅ Download de vídeo + áudio (até 720p)
+- ✅ Download de vídeo + áudio (até 4K)
 - ✅ Download de vídeo HD + áudio (mesclado)
-- ✅ Download apenas áudio
+- ✅ Download apenas áudio (MP3, WAV, AAC)
 - ✅ Barra de progresso em tempo real
 - ✅ API REST documentada
 - ✅ Gerenciamento de tarefas assíncronas
+- ✅ Sistema de contas de usuário
+- ✅ Interface desktop com Electron
+- ✅ Histórico de downloads
+- ✅ Suporte a múltiplas plataformas (YouTube, Twitch, Spotify)
 
 ### Em Desenvolvimento
-- 🔄 Sistema de autenticação
-- 🔄 Histórico de downloads
-- 🔄 Rate limiting
+- 🔄 Sistema de assinaturas Premium
+- 🔄 Downloads em lote
+- 🔄 Rate limiting inteligente
 - 🔄 Armazenamento em nuvem
 - 🔄 Notificações push
+- 🔄 Integração com Google Drive/Dropbox
+- 🔄 Conversão para formatos personalizados
+- 🔄 Sincronização entre dispositivos
 
 ## 🔌 API Endpoints
 
-### GET /
-- Informações da API
+### Vídeos e Downloads
+```json
+GET /api
+- Informações da API e status do serviço
 
-### POST /video/info
+POST /api/video/info
 - Obtém informações do vídeo
-- Body: `{"url": "youtube_url"}`
+- Body: {
+  "url": "video_url",
+  "platform": "youtube|twitch|spotify"
+}
 
-### POST /video/download
+POST /api/video/download
 - Inicia download
-- Body: `{"url": "youtube_url", "format_type": "video_with_audio", "quality": "best"}`
+- Body: {
+  "url": "video_url",
+  "format_type": "video|audio|both",
+  "quality": "4k|1080p|720p|480p|best",
+  "audio_format": "mp3|wav|aac",
+}
 
-### GET /video/status/{task_id}
+GET /api/video/status/{task_id}
 - Verifica status do download
+- Response: {
+  "status": "pending|processing|completed|error",
+  "progress": 0-100,
+  "estimated_time": "mm:ss",
+  "download_url": "string"
+}
 
-### GET /downloads/{folder}/{filename}
-- Download do arquivo
-
-### DELETE /video/cleanup/{task_id}
+DELETE /api/video/cleanup/{task_id}
 - Remove arquivo e limpa dados
+```
 
-## 🧪 Testes
+### Usuários e Contas
+```json
+POST /api/auth/register
+- Registro de novo usuário
+- Body: {
+  "username": "string",
+  "email": "string",
+  "password": "string"
+}
 
+POST /api/auth/login
+- Login de usuário
+- Body: {
+  "email": "string",
+  "password": "string"
+}
+
+GET /api/user/downloads
+- Lista histórico de downloads
+
+POST /api/user/preferences
+- Atualiza preferências do usuário
+```
+
+## 🧪 Testes e Qualidade
+
+### Testes Automatizados
+```bash
+# Backend (FastAPI)
+cd backend
+pytest               # Testes unitários
+pytest --cov        # Cobertura de código
+pytest --integration # Testes de integração
+
+# Frontend (Next.js)
+cd frontend
+npm test            # Testes unitários
+npm run test:e2e    # Testes E2E com Cypress
+npm run test:watch  # Modo watch
+```
+
+### Qualidade de Código
 ```bash
 # Backend
-cd backend
-pytest
+flake8              # Linting
+black .             # Formatação
+mypy .              # Type checking
 
-# Frontend  
-cd frontend
-npm test
+# Frontend
+npm run lint        # ESLint
+npm run format      # Prettier
+npm run type-check  # TypeScript
 ```
 
 ## 📦 Deploy
 
 ### Backend (Docker)
 ```dockerfile
+# Base image
 FROM python:3.11-slim
+
+# Install ffmpeg
+RUN apt-get update && apt-get install -y ffmpeg
+
+# Create app directory
 WORKDIR /app
+
+# Install dependencies
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application
 COPY . .
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1
+ENV PORT=8000
+
+# Expose port
+EXPOSE 8000
+
+# Run application
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
-### Frontend (Vercel)
+### Frontend (Vercel/Docker)
 ```bash
+# Build para produção
 npm run build
+
+# Deploy no Vercel
 vercel --prod
+
+# Ou build Docker
+docker build -t trivid-frontend .
+docker run -p 3000:3000 trivid-frontend
+```
+
+### Desktop App (Electron)
+```bash
+# Build para Windows
+npm run build:win
+
+# Build para MacOS
+npm run build:mac
+
+# Build para Linux
+npm run build:linux
 ```
 
 ## 🤝 Contribuição
