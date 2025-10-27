@@ -7,4 +7,4 @@ PySide6_Essentials==6.9.1
 pytubefix==9.2.1
 requests==2.32.4
 shiboken6==6.9.1
-urllib3==2.5.0
+urllib3==2.5.0 
